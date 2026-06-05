@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binance Approval Process — Cache RE</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #f5f5f2;
+    margin: 0;
+    padding: 32px 16px;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0ddd6;
+    padding: 40px 44px 48px;
+  }
+  .doc-title { font-size: 22px; font-weight: 600; margin: 0 0 4px; color: #111; }
+  .doc-sub { font-size: 13px; color: #888; margin: 0 0 28px; }
+  .doc-sub span { margin-right: 6px; }
+  .doc-sub span::after { content: '·'; margin-left: 6px; color: #ccc; }
+  .doc-sub span:last-child::after { content: ''; }
+  hr { border: none; border-top: 1px solid #ebebeb; margin: 28px 0; }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin: 0 0 12px;
+  }
+
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .scope-item {
+    background: #f7f6f2;
+    border: 1px solid #e8e6de;
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 13px;
+    color: #444;
+  }
+
+  .key-rules { margin-bottom: 4px; }
+  .key-rule {
+    background: #f0f6ff;
+    border: 1px solid #d4e4f7;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #1a3a5c;
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+
+  .steps { margin-bottom: 4px; }
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f0f0ec;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-body {
+    flex: 1;
+    border: 1px solid #e8e6de;
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .step-title { font-size: 14px; font-weight: 600; color: #111; }
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 10px;
+  }
+  .badge-blue { background: #e6f0fb; color: #185fa5; }
+  .badge-amber { background: #fdf0d8; color: #7a4a0a; }
+  .badge-green { background: #e4f5ec; color: #0a5c35; }
+
+  .step-desc {
+    font-size: 13px;
+    color: #555;
+    margin: 0 0 10px;
+    line-height: 1.55;
+  }
+  .req-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #999;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .req-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #f0ede6;
+  }
+  .req-list li {
+    font-size: 13px;
+    color: #333;
+    padding: 6px 0 6px 16px;
+    position: relative;
+    border-bottom: 1px solid #f0ede6;
+    line-height: 1.5;
+  }
+  .req-list li:last-child { border-bottom: none; }
+  .req-list li::before { content: '–'; position: absolute; left: 0; color: #bbb; }
+
+  .alert {
+    border-radius: 7px;
+    padding: 9px 13px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+  .alert-info { background: #eef5ff; color: #1a4a8a; border: 1px solid #c8dcf5; }
+  .alert-warn { background: #fdf5e6; color: #7a4a0a; border: 1px solid #f0d8a0; }
+
+  .block-section { margin-top: 4px; }
+  .block-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .block-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 9px 12px;
+    border: 1px solid #f5c6c6;
+    border-radius: 8px;
+    background: #fff8f8;
+    font-size: 12.5px;
+    color: #8b2020;
+    line-height: 1.45;
+  }
+  .block-item::before {
+    content: '✕';
+    font-size: 11px;
+    color: #c0392b;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-weight: 700;
+  }
+  .block-item.full { grid-column: 1 / -1; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { border: none; border-radius: 0; padding: 24px 32px; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="doc-title">Binance money movement — approval process</p>
+  <p class="doc-sub">
+    <span>Trustee Operations</span>
+    <span>Cache RE</span>
+    <span>Reference guide</span>
+  </p>
+
+  <div class="section-label">Scope</div>
+  <div class="scope-grid">
+    <div class="scope-item">Investor distributions</div>
+    <div class="scope-item">Investor redemptions</div>
+    <div class="scope-item">Early redemptions</div>
+    <div class="scope-item">Post-lock-in redemptions</div>
+  </div>
+
+  <hr>
+
+  <div class="section-label">Key rules</div>
+  <div class="key-rules">
+    <div class="key-rule">Every redemption request must have correct approval evidence before the Binance transaction can be approved.</div>
+    <div class="key-rule">There is only a <strong>15-minute window</strong> from when the IM lodges the Binance request to when Cache completes both required approvals. Two approvers must be available within this window.</div>
+    <div class="key-rule"><strong>Early redemptions</strong> require an RE-approved ticket. <strong>Post-lock-in redemptions</strong> require matching Admin Portal transactions.</div>
+  </div>
+
+  <hr>
+
+  <div class="section-label">Process steps</div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">IM submits request to Cache RE</span>
+          <span class="badge badge-blue">Investment Manager</span>
+        </div>
+        <p class="step-desc">The Investment Manager raises a ticket to Cache RE requesting Binance approval. The request must be complete before Cache RE can begin validation.</p>
+        <p class="req-label">The ticket must include:</p>
+        <ul class="req-list">
+          <li>The agreed day and time for the Binance transaction to be processed</li>
+          <li>The relevant transaction ID(s) for the full amount Cache will need to approve</li>
+          <li>The RE-approved ticket (early redemptions only)</li>
+          <li>The total amount expected to be approved in Binance</li>
+        </ul>
+        <div class="alert alert-info">Both parties must agree on the exact day and time before Cache RE proceeds.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">Cache RE validates the request</span>
+          <span class="badge badge-blue">Cache RE</span>
+        </div>
+        <p class="step-desc">Before the agreed processing time, Cache RE performs pre-approval checks. All items must be verified before proceeding.</p>
+        <p class="req-label">Cache RE must confirm:</p>
+        <ul class="req-list">
+          <li>Admin Portal transaction(s) exist for the full redemption amount <em>(post-lock-in)</em></li>
+          <li>The RE approval ticket exists and is properly approved <em>(early redemptions)</em></li>
+          <li>The amount requested aligns with the supporting evidence</li>
+          <li>Current USDT/AUD exchange rate checked online — any variance is reasonable</li>
+          <li>Full Binance approval amount recorded on the ticket</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">Create a processing reminder</span>
+          <span class="badge badge-blue">Cache RE</span>
+        </div>
+        <p class="step-desc">Once the time is agreed, Cache RE sets a reminder in Slack or Teams so approvers are ready at the right moment.</p>
+        <p class="req-label">The reminder must include:</p>
+        <ul class="req-list">
+          <li>The ticket reference</li>
+          <li>The agreed approval time</li>
+          <li>The expected approval amount</li>
+          <li>A note that two Cache approvers are required within the 15-minute window</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">Binance request received — pre-approval checks</span>
+          <span class="badge badge-amber">Both approvers</span>
+        </div>
+        <p class="step-desc">When the Binance request comes through, both approvers independently verify the request before approving.</p>
+        <p class="req-label">Both approvers must verify:</p>
+        <ul class="req-list">
+          <li>The Binance approval request matches the agreed ticket</li>
+          <li>The total amount in Binance corresponds to the amount recorded on the ticket</li>
+          <li>Any difference is explainable by the USDT/AUD exchange rate</li>
+          <li>The request is being approved within the agreed 15-minute window</li>
+        </ul>
+        <div class="alert alert-warn">Do not approve if the amount cannot be reconciled or if you are outside the agreed window.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">Approve the Binance transaction</span>
+          <span class="badge badge-amber">Both approvers</span>
+        </div>
+        <p class="step-desc">Once all checks in step 4 are complete and passed, both Cache approvers approve the transaction in Binance.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">Confirm receipt with FundOps</span>
+          <span class="badge badge-blue">Cache RE</span>
+        </div>
+        <p class="step-desc">After approval, the approver contacts FundOps to confirm the funds have been received in Zerocap.</p>
+        <div class="alert alert-info">The ticket must not be closed until FundOps has confirmed receipt in Zerocap.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">Record and close the ticket</span>
+          <span class="badge badge-green">Cache RE</span>
+        </div>
+        <p class="step-desc">Cache RE updates the ticket with a full record of the approval before closing.</p>
+        <p class="req-label">The ticket record must include:</p>
+        <ul class="req-list">
+          <li>Confirmation that the Binance request was approved</li>
+          <li>Confirmation that the amount matched the approved ticket or Admin Portal evidence</li>
+          <li>Exchange rate variance noted (if applicable)</li>
+          <li>FundOps confirmation of receipt in Zerocap</li>
+          <li>Date and time of approval</li>
+          <li>Names of both approvers</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="section-label">Do not approve if any of the following apply</div>
+  <div class="block-grid">
+    <div class="block-item">No approved RE ticket for an early redemption</div>
+    <div class="block-item">No matching Admin Portal transactions for a post-lock-in redemption</div>
+    <div class="block-item">Amount does not match the amount on the ticket</div>
+    <div class="block-item">Exchange rate variance cannot be explained</div>
+    <div class="block-item">Request is outside the agreed processing window</div>
+    <div class="block-item">Two Cache approvers not available within the 15-minute window</div>
+    <div class="block-item full">FundOps cannot confirm receipt in Zerocap — do not close the ticket</div>
+  </div>
+
+</div>
+</body>
+</html>
