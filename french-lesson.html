@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>French Lessons — Pronunciation to Past Tense</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bleu: #1a3a5c;
+    --bleu-mid: #2d5f8a;
+    --bleu-light: #e8f0f8;
+    --rouge: #c0392b;
+    --blanc: #f8f6f2;
+    --or: #d4a843;
+    --gris: #5a6472;
+    --gris-light: #eef0f3;
+    --text: #1c2330;
+    --rule: #d0d7e0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--blanc);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--bleu);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    padding: 14px 20px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    color: var(--or);
+    letter-spacing: 0.02em;
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+  }
+  .nav-tab {
+    padding: 14px 16px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    color: rgba(255,255,255,0.65);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .nav-tab:hover { color: white; background: rgba(255,255,255,0.05); }
+  .nav-tab.active { color: var(--or); border-bottom-color: var(--or); }
+
+  /* PAGE */
+  .section {
+    display: none;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .section.active { display: block; }
+
+  /* TYPOGRAPHY */
+  .section-hero {
+    border-left: 4px solid var(--or);
+    padding-left: 18px;
+    margin-bottom: 36px;
+  }
+  .section-hero .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bleu-mid);
+    margin-bottom: 6px;
+  }
+  .section-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    line-height: 1.15;
+    color: var(--bleu);
+    margin-bottom: 10px;
+  }
+  .section-hero p {
+    font-size: 1rem;
+    color: var(--gris);
+    max-width: 560px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.55rem;
+    color: var(--bleu);
+    margin: 36px 0 14px;
+  }
+  h2:first-child { margin-top: 0; }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bleu-mid);
+    margin: 24px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.82rem;
+  }
+  p { margin-bottom: 14px; color: #2c3440; }
+
+  /* RULE CARD */
+  .rule-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .rule-card .rule-title {
+    font-weight: 600;
+    color: var(--bleu);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rule-card .rule-title .badge {
+    background: var(--bleu-light);
+    color: var(--bleu-mid);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .rule-card p { margin-bottom: 0; font-size: 0.93rem; }
+
+  /* ALPHABET GRID */
+  .alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+    margin: 16px 0 24px;
+  }
+  .letter-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .letter-card:hover, .letter-card.highlight {
+    border-color: var(--bleu-mid);
+    background: var(--bleu-light);
+    transform: translateY(-1px);
+  }
+  .letter-card .fr-letter {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--bleu);
+    display: block;
+  }
+  .letter-card .pronunciation {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--rouge);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* SOUND TABLE */
+  .sound-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  @media (max-width: 540px) { .sound-grid { grid-template-columns: 1fr; } }
+  .sound-item {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .sound-symbol {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--rouge);
+    min-width: 40px;
+    padding: 4px 8px;
+    background: #fdf2f2;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .sound-info .sound-name { font-weight: 600; font-size: 0.88rem; color: var(--bleu); }
+  .sound-info .sound-examples { font-size: 0.8rem; color: var(--gris); margin-top: 3px; }
+  .sound-info .sound-tip { font-size: 0.78rem; color: #7a8694; font-style: italic; margin-top: 2px; }
+
+  /* EXAMPLES LIST */
+  .examples {
+    background: var(--bleu-light);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0 18px;
+  }
+  .examples .ex-item {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 0.9rem;
+  }
+  .examples .ex-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .examples .ex-fr {
+    font-weight: 600;
+    color: var(--bleu);
+    min-width: 150px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+  }
+  .examples .ex-en { color: var(--gris); }
+
+  /* CONJUGATION TABLE */
+  .conj-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 0.88rem;
+  }
+  .conj-table th {
+    background: var(--bleu);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .conj-table th:first-child { border-radius: 8px 0 0 0; }
+  .conj-table th:last-child { border-radius: 0 8px 0 0; }
+  .conj-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:nth-child(even) td { background: var(--gris-light); }
+  .conj-table .pronoun { color: var(--gris); font-size: 0.82rem; }
+  .conj-table .verb { font-weight: 600; color: var(--bleu); font-family: 'JetBrains Mono', monospace; }
+  .conj-table .ending { color: var(--rouge); }
+
+  /* EXERCISE */
+  .exercise-block {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 20px 0;
+  }
+  .exercise-block .ex-title {
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--or);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .exercise-block .ex-title::before {
+    content: '✏️';
+    font-size: 1rem;
+  }
+  .fill-blank {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fill-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.92rem;
+  }
+  .fill-row input {
+    border: none;
+    border-bottom: 2px solid var(--bleu-mid);
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--bleu);
+    background: transparent;
+    outline: none;
+    min-width: 120px;
+    transition: border-color 0.2s;
+  }
+  .fill-row input:focus { border-color: var(--or); }
+  .fill-row input.correct { border-color: #27ae60; background: #f0faf4; }
+  .fill-row input.wrong { border-color: var(--rouge); background: #fdf2f2; }
+  .fill-row .hint { font-size: 0.8rem; color: var(--gris); font-style: italic; }
+  .check-btn {
+    margin-top: 14px;
+    background: var(--bleu);
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+  .check-btn:hover { background: var(--bleu-mid); }
+  .show-btn {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--gris);
+    padding: 7px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    margin-left: 8px;
+    transition: all 0.2s;
+  }
+  .show-btn:hover { border-color: var(--bleu-mid); color: var(--bleu-mid); }
+  .answer-key {
+    display: none;
+    margin-top: 14px;
+    background: var(--gris-light);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 0.86rem;
+  }
+  .answer-key.visible { display: block; }
+  .answer-key .ak-row { padding: 4px 0; display: flex; gap: 10px; }
+  .answer-key .ak-num { color: var(--gris); min-width: 20px; }
+  .answer-key .ak-ans { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--bleu); }
+
+  /* INFO BOX */
+  .tip-box {
+    background: linear-gradient(135deg, #fff8e8, #fff3d6);
+    border-left: 3px solid var(--or);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+  .tip-box strong { color: #8b6914; }
+
+  .warning-box {
+    background: #fdf2f2;
+    border-left: 3px solid var(--rouge);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+
+  /* VOCAB TABLE */
+  .vocab-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 14px 0;
+  }
+  @media (max-width: 500px) { .vocab-2col { grid-template-columns: 1fr; } }
+  .vocab-item {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    padding: 9px 12px;
+    font-size: 0.87rem;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .vocab-item .vfr { font-weight: 600; color: var(--bleu); font-family: 'JetBrains Mono', monospace; font-size: 0.83rem; }
+  .vocab-item .ven { color: var(--gris); }
+
+  /* DIALOGUE */
+  .dialogue {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dialogue-line {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .dialogue-speaker {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .dialogue-speaker.client { background: var(--bleu-light); color: var(--bleu-mid); }
+  .dialogue-speaker.staff { background: #f0faf4; color: #1e7a40; }
+  .dialogue-text { font-size: 0.9rem; }
+  .dialogue-text .translation { font-size: 0.8rem; color: var(--gris); font-style: italic; }
+
+  /* PROGRESS */
+  .progress-bar {
+    height: 3px;
+    background: var(--rule);
+    border-radius: 2px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--or);
+    border-radius: 2px;
+    transition: width 0.4s;
+  }
+
+  /* VERB GROUP TABS */
+  .group-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--rule);
+    margin: 16px 0 0;
+  }
+  .group-tab {
+    padding: 10px 18px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gris);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+  .group-tab:hover { color: var(--bleu-mid); }
+  .group-tab.active { color: var(--bleu); border-bottom-color: var(--bleu); font-weight: 600; }
+  .group-content { display: none; padding: 20px 0 0; }
+  .group-content.active { display: block; }
+
+  /* STEP */
+  .steps {
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .step-num {
+    counter-increment: step;
+    min-width: 28px;
+    height: 28px;
+    background: var(--bleu);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .step-body { font-size: 0.92rem; }
+  .step-body code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bleu-light);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--bleu);
+    font-size: 0.88em;
+  }
+
+  /* QUICK REFERENCE */
+  .quick-ref {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  @media (max-width: 500px) { .quick-ref { grid-template-columns: 1fr; } }
+  .qr-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .qr-card .qr-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gris);
+    margin-bottom: 8px;
+  }
+  .qr-card .qr-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--gris-light);
+    font-size: 0.87rem;
+  }
+  .qr-card .qr-item:last-child { border-bottom: none; }
+  .qr-card .qr-fr { font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--bleu); }
+  .qr-card .qr-en { color: var(--gris); font-size: 0.82rem; }
+
+  /* ACCORDION */
+  .accordion {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  .accordion-item { border-bottom: 1px solid var(--rule); }
+  .accordion-item:last-child { border-bottom: none; }
+  .accordion-header {
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--bleu);
+    background: white;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .accordion-header:hover { background: var(--bleu-light); }
+  .accordion-arrow { transition: transform 0.2s; color: var(--bleu-mid); }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body {
+    display: none;
+    padding: 14px 18px 18px;
+    background: white;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+  }
+  .accordion-body.open { display: block; }
+
+  /* HIGHLIGHT */
+  .fr { font-family: 'JetBrains Mono', monospace; color: var(--bleu); font-weight: 600; font-size: 0.93em; }
+  .en { color: var(--gris); }
+  .ipa { color: var(--rouge); font-family: 'JetBrains Mono', monospace; }
+
+  /* SEPARATOR */
+  hr { border: none; border-top: 1px solid var(--rule); margin: 28px 0; }
+
+  /* READING TEXT */
+  .reading-text {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 24px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin: 16px 0;
+    position: relative;
+  }
+  .reading-text::before {
+    content: 'TEXTE';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--rouge);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* EXCEPTION TABLE */
+  .exception-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 12px 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .exception-table th {
+    background: var(--bleu);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .exception-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .exception-table tr:last-child td { border-bottom: none; }
+  .exception-table tr:nth-child(even) td { background: var(--gris-light); }
+  .exception-table td:first-child { font-weight: 600; font-family: 'JetBrains Mono', monospace; color: var(--bleu); }
+  .exception-table td:nth-child(2) { font-style: italic; color: var(--gris); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">🇫🇷 Français</div>
+    <div class="nav-tabs">
+      <div class="nav-tab active" onclick="showSection('pronunciation')">Pronunciation</div>
+      <div class="nav-tab" onclick="showSection('numbers')">Numbers</div>
+      <div class="nav-tab" onclick="showSection('verbs')">Verbs</div>
+      <div class="nav-tab" onclick="showSection('articles')">Articles</div>
+      <div class="nav-tab" onclick="showSection('possessives')">Possessives</div>
+      <div class="nav-tab" onclick="showSection('sentences')">Sentences</div>
+      <div class="nav-tab" onclick="showSection('pasttense')">Past Tense</div>
+      <div class="nav-tab" onclick="showSection('future')">Future</div>
+      <div class="nav-tab" onclick="showSection('reflexive')">Reflexive</div>
+      <div class="nav-tab" onclick="showSection('imparfait')">Imparfait</div>
+      <div class="nav-tab" onclick="showSection('pronouns')">Pronouns</div>
+      <div class="nav-tab" onclick="showSection('hotel')">Hotel</div>
+      <div class="nav-tab" onclick="showSection('restaurant')">Restaurant</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== PRONUNCIATION ==================== -->
+<div id="pronunciation" class="section active">
+  <div class="section-hero">
+    <div class="eyebrow">Lesson 1</div>
+    <h1>Pronunciation</h1>
+    <p>French sounds quite different from English. This page covers the alphabet, vowel combinations, and key consonant rules — the foundation for reading everything else.</p>
+  </div>
+
+  <h2>The Alphabet</h2>
+  <p>Click any letter to highlight it. The pronunciation shown is how you <em>say the letter name</em> in French — not necessarily how it sounds in a word.</p>
+  <div class="alphabet-grid" id="alphabetGrid"></div>
+
+  <hr>
+  <h2>Vowel Combinations</h2>
+  <p>These letter pairs make a completely new sound — you can't just blend the two letters together.</p>
+
+  <div class="sound-grid">
+    <div class="sound-item">
+      <div class="sound-symbol">an/en<br>am/em</div>
+      <div class="sound-info">
+        <div class="sound-name">Nasal "ã" sound</div>
+        <div class="sound-examples">enfant · argent · éléphant · gingembre</div>
+        <div class="sound-tip">Before p or b, n → m (gingembre, jambe)</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">ou</div>
+      <div class="sound-info">
+        <div class="sound-name">= "oo" (like "food")</div>
+        <div class="sound-examples">roue · bambou · acajou</div>
+        <div class="sound-tip">wheel · bamboo · mahogany</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">oi</div>
+      <div class="sound-info">
+        <div class="sound-name">= "wa"</div>
+        <div class="sound-examples">oie · poids · roi</div>
+        <div class="sound-tip">goose · weight · king</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">in/un<br>ein/ain</div>
+      <div class="sound-info">
+        <div class="sound-name">Nasal [ɛ̃] sound</div>
+        <div class="sound-examples">sapin · pain · brun · parfum</div>
+        <div class="sound-tip">pine tree · bread · brunet · perfume</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">on/om</div>
+      <div class="sound-info">
+        <div class="sound-name">Nasal [ɔ̃] sound</div>
+        <div class="sound-examples">bombe · ballon · rond</div>
+        <div class="sound-tip">bomb · balloon · round</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">ai/er</div>
+      <div class="sound-info">
+        <div class="sound-name">= "ay" (like "fair")</div>
+        <div class="sound-examples">raie · chaise · danser</div>
+        <div class="sound-tip">stingray · chair · to dance</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">eu/oeu</div>
+      <div class="sound-info">
+        <div class="sound-name">Rounded "ɵ" sound</div>
+        <div class="sound-examples">peur · coeur · fleur · oeuf</div>
+        <div class="sound-tip">fear · heart · flower · egg</div>
+      </div>
+    </div>
+    <div class="sound-item">
+      <div class="sound-symbol">au/eau</div>
+      <div class="sound-info">
+        <div class="sound-name">= "oh"</div>
+        <div class="sound-examples">eau · pot · beau · haut</div>
+        <div class="sound-tip">water · pot · beautiful · high</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <h2>Consonant Rules</h2>
+
+  <div class="accordion" id="consonantAccordion">
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        Silent final consonants <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>If a word ends in two consonants, ignore the <strong>last</strong> one. If a word ends in vowel + consonant, also ignore the consonant.</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">concert</span><span class="ex-en">→ [kɔ̃sɛʀ] — the final -t is silent</span></div>
+          <div class="ex-item"><span class="ex-fr">restaurant</span><span class="ex-en">→ no -t at the end</span></div>
+          <div class="ex-item"><span class="ex-fr">petit</span><span class="ex-en">→ "puh-tee" — the -t is silent</span></div>
+          <div class="ex-item"><span class="ex-fr">Louis, François, Nicolas</span><span class="ex-en">→ all silent final consonants</span></div>
+        </div>
+        <p><strong>But add -e at the end?</strong> Then you DO pronounce the last consonant.</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">couvert → couverte</span><span class="ex-en">the final -t gets pronounced in the feminine</span></div>
+          <div class="ex-item"><span class="ex-fr">petit → petite</span><span class="ex-en">"puh-teet" — the -t is pronounced</span></div>
+          <div class="ex-item"><span class="ex-fr">cerise · fraise · framboise</span><span class="ex-en">cherry · strawberry · raspberry</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        The CaReFuL rule <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>Words ending in <strong>C, R, F, L</strong> — pronounce these letters.</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">Daniel · Marc · Éric</span><span class="ex-en">all final consonants pronounced</span></div>
+          <div class="ex-item"><span class="ex-fr">neuf · parc · choc</span><span class="ex-en">nine · park · shock</span></div>
+        </div>
+        <div class="warning-box">
+          <strong>Exceptions — do NOT pronounce the -c:</strong><br>
+          blanc, banc, cerf, tabac
+        </div>
+        <div class="tip-box">
+          <strong>-er verbs are always "ay" sound:</strong> danser, parler, voyager — the CaReFuL rule does NOT apply to these.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        QU = K <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>"qu" in French always sounds like "k" — not like the English "qu" in "quantity".</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">question</span><span class="ex-en">= "kestion"</span></div>
+          <div class="ex-item"><span class="ex-fr">quoi · quand · qui</span><span class="ex-en">kwa · kã · ki (what · when · who)</span></div>
+          <div class="ex-item"><span class="ex-fr">quantité</span><span class="ex-en">= "kantité"</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        Single -s vs double -ss <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>Single -s between vowels</strong> = sounds like <em>z</em></p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">poison</span><span class="ex-en">= "pwa-ZON" (poison)</span></div>
+          <div class="ex-item"><span class="ex-fr">Isabelle · désert · ciseaux</span><span class="ex-en">all with z-sound</span></div>
+        </div>
+        <p><strong>Double -ss</strong> = sounds like <em>s</em></p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">poisson</span><span class="ex-en">= "pwa-SON" (fish) — don't mix these up!</span></div>
+          <div class="ex-item"><span class="ex-fr">dessert · chaussette · message</span><span class="ex-en">all with s-sound</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        Soft & hard C and G <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>C before e or i</strong> = soft "s" sound</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">cerise · certain · cinéma</span><span class="ex-en">cherry · certain · cinema</span></div>
+        </div>
+        <p><strong>C before anything else</strong> = hard "k" sound</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">crêpe · coïncidence · classe</span><span class="ex-en">crepe · coincidence · class</span></div>
+        </div>
+        <hr>
+        <p><strong>G before e, i, y</strong> = soft "zh" sound (like the "s" in "measure")</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">géant · girafe · génial</span><span class="ex-en">giant · giraffe · great</span></div>
+        </div>
+        <p><strong>G before anything else</strong> = hard "g"</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">grand · gros · gorge</span><span class="ex-en">big · fat · throat</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        Special combinations: -gn, -ll, -h, -th, -ph <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>-gn</strong> = "ny" sound (like Spanish ñ or English "canyon")</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">gagner · signer · cygne</span><span class="ex-en">to win · to sign · swan</span></div>
+        </div>
+        <p><strong>-ll</strong> after most vowels = soft "y" sound. Exception: <em>mille, ville, tranquille</em> (and related words) keep a regular -l.</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">fille · famille · vanille</span><span class="ex-en">girl · family · vanilla (y-sound)</span></div>
+          <div class="ex-item"><span class="ex-fr">million · village</span><span class="ex-en">l-sound (related to mille/ville)</span></div>
+        </div>
+        <p><strong>-h at the start of a word</strong> = completely silent</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">hôtel · hôpital · histoire</span><span class="ex-en">hotel · hospital · history</span></div>
+        </div>
+        <p><strong>-th</strong> = just a "t" (ignore the h)</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">mathématiques · thé · athlète</span><span class="ex-en">maths · tea · athlete</span></div>
+        </div>
+        <p><strong>-ph</strong> = "f" sound</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">éléphant · Philippe</span><span class="ex-en">elephant · Philippe</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        Tricky endings: -euil, -ouille, -eille, -aille <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>-euil</strong> = "ɵy" sound (very French!)</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">feuille</span><span class="ex-en">leaf → "fuyh"</span></div>
+          <div class="ex-item"><span class="ex-fr">accueil · écureuil · portefeuille</span><span class="ex-en">reception · squirrel · wallet</span></div>
+        </div>
+        <p><strong>-ouille</strong> = "ou-ee" sound</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">grenouille · nouille</span><span class="ex-en">frog · pasta</span></div>
+        </div>
+        <p><strong>-eille</strong> = "ay" sound; <strong>-aille</strong> = "eye" sound</p>
+        <div class="examples">
+          <div class="ex-item"><span class="ex-fr">Marseille · bouteille</span><span class="ex-en">"ay" ending</span></div>
+          <div class="ex-item"><span class="ex-fr">bataille · volaille</span><span class="ex-en">battle · poultry ("eye" ending)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <h2>Reading Exercise</h2>
+  <p>Read this text aloud, applying all the rules above. Aim for smooth pronunciation.</p>
+  <div class="reading-text">
+    Au petit-déjeuner, on prend du pain ou des biscottes. Sur le pain, on met du beurre et de la confiture. On appelle ça des tartines. On boit aussi du café au lait, du thé ou du chocolat chaud. On peut aussi prendre un bol de lait avec des céréales. On peut aussi boire un jus de fruits ou manger un yaourt. Le dimanche matin, les Français vont à la boulangerie pour acheter des croissants ou des pains au chocolat.
+  </div>
+  <p><em>Translation: For breakfast, we have bread or crackers. On the bread we put butter and jam — we call this "tartines". We also drink café au lait, tea, or hot chocolate. On Sundays, the French go to the bakery to buy croissants or pain au chocolat.</em></p>
+</div>
+
+<!-- ==================== NUMBERS ==================== -->
+<div id="numbers" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Lesson 2</div>
+    <h1>Numbers</h1>
+    <p>French numbers have a few quirks — especially in the 70s and 90s — but once you see the pattern, they click.</p>
+  </div>
+
+  <h2>0–19</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">0 — zéro</span></div>
+    <div class="vocab-item"><span class="vfr">1 — un</span></div>
+    <div class="vocab-item"><span class="vfr">2 — deux</span></div>
+    <div class="vocab-item"><span class="vfr">3 — trois</span></div>
+    <div class="vocab-item"><span class="vfr">4 — quatre</span></div>
+    <div class="vocab-item"><span class="vfr">5 — cinq</span></div>
+    <div class="vocab-item"><span class="vfr">6 — six</span></div>
+    <div class="vocab-item"><span class="vfr">7 — sept</span></div>
+    <div class="vocab-item"><span class="vfr">8 — huit</span></div>
+    <div class="vocab-item"><span class="vfr">9 — neuf</span></div>
+    <div class="vocab-item"><span class="vfr">10 — dix</span></div>
+    <div class="vocab-item"><span class="vfr">11 — onze</span></div>
+    <div class="vocab-item"><span class="vfr">12 — douze</span></div>
+    <div class="vocab-item"><span class="vfr">13 — treize</span></div>
+    <div class="vocab-item"><span class="vfr">14 — quatorze</span></div>
+    <div class="vocab-item"><span class="vfr">15 — quinze</span></div>
+    <div class="vocab-item"><span class="vfr">16 — seize</span></div>
+    <div class="vocab-item"><span class="vfr">17 — dix-sept</span></div>
+    <div class="vocab-item"><span class="vfr">18 — dix-huit</span></div>
+    <div class="vocab-item"><span class="vfr">19 — dix-neuf</span></div>
+  </div>
+
+  <h2>Tens — The Tricky Ones</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">20 — vingt</span></div>
+    <div class="vocab-item"><span class="vfr">30 — trente</span></div>
+    <div class="vocab-item"><span class="vfr">40 — quarante</span></div>
+    <div class="vocab-item"><span class="vfr">50 — cinquante</span></div>
+    <div class="vocab-item"><span class="vfr">60 — soixante</span></div>
+    <div class="vocab-item"><span class="vfr">70 — soixante-dix</span><span class="ven">(= 60+10)</span></div>
+    <div class="vocab-item"><span class="vfr">80 — quatre-vingts</span><span class="ven">(= 4×20)</span></div>
+    <div class="vocab-item"><span class="vfr">90 — quatre-vingt-dix</span><span class="ven">(= 4×20+10)</span></div>
+    <div class="vocab-item"><span class="vfr">100 — cent</span></div>
+    <div class="vocab-item"><span class="vfr">1000 — mille</span></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>Why is 70 "sixty-ten"?</strong> French historically counted in 20s. So 70 = soixante-dix (60+10), 71 = soixante et onze, 72 = soixante-douze… up to 79 = soixante-dix-neuf. Same logic for 90s.
+  </div>
+
+  <h2>Three Key Rules</h2>
+  <div class="rule-card">
+    <div class="rule-title">Rule 1 — Use <span class="badge">et</span> for numbers ending in 1</div>
+    <p>21 = vingt <strong>et</strong> un &nbsp;·&nbsp; 61 = soixante <strong>et</strong> un<br>
+    <strong>Exceptions:</strong> 81 = quatre-vingt-un · 91 = quatre-vingt-onze (no "et")</p>
+  </div>
+  <div class="rule-card">
+    <div class="rule-title">Rule 2 — Use <span class="badge">-</span> (hyphen) for numbers ending in 3–9</div>
+    <p>17 = dix-sept · 38 = trente-huit · 45 = cinquante-cinq</p>
+  </div>
+  <div class="rule-card">
+    <div class="rule-title">Rule 3 — <span class="badge">cents</span> takes an -s only when alone</div>
+    <p>200 = deux-<strong>cents</strong> (ends here → add -s)<br>
+    204 = deux-cent-quatre (followed by more → no -s)</p>
+  </div>
+
+  <hr>
+  <h2>Exercise — Write these numbers out</h2>
+  <div class="exercise-block">
+    <div class="ex-title">Write the numbers in full</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>Mont-Blanc height:</span><input type="text" data-answer="quatre mille huit cent dix" placeholder="4 810"> mètres</div>
+      <div class="fill-row"><span>Days of rain in Paris per year:</span><input type="text" data-answer="cent onze" placeholder="111"> jours</div>
+      <div class="fill-row"><span>Sunny days in Paris per year:</span><input type="text" data-answer="cinquante et un" placeholder="51"></div>
+      <div class="fill-row"><span>Macron's age:</span><input type="text" data-answer="quarante-cinq" placeholder="45"> ans</div>
+      <div class="fill-row"><span>Population of France:</span><input type="text" data-answer="soixante-sept millions" placeholder="67 million..."></div>
+      <div class="fill-row"><span>Number of French regions:</span><input type="text" data-answer="treize" placeholder="13"></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">quatre mille huit cent dix</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">cent onze</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">cinquante et un</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">quarante-cinq</span></div>
+      <div class="ak-row"><span class="ak-num">5.</span><span class="ak-ans">soixante-sept millions (soixante-quinze)</span></div>
+      <div class="ak-row"><span class="ak-num">6.</span><span class="ak-ans">treize</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== VERBS ==================== -->
+<div id="verbs" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Lesson 4</div>
+    <h1>Verbs & Conjugation</h1>
+    <p>French verbs are grouped into three families. Each has its own pattern for changing endings based on who is speaking.</p>
+  </div>
+
+  <h2>The Three Groups</h2>
+
+  <div class="group-tabs">
+    <div class="group-tab active" onclick="showGroup(this, 'g1')">Group 1 — ER verbs</div>
+    <div class="group-tab" onclick="showGroup(this, 'g2')">Group 2 — IR verbs</div>
+    <div class="group-tab" onclick="showGroup(this, 'g3')">Group 3 — Irregular</div>
+  </div>
+
+  <div id="g1" class="group-content active">
+    <p>All verbs ending in <strong>-er</strong>. The biggest group. Very regular.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">Remove <code>-er</code> → <strong>stem</strong>. <em>parler</em> → <code>parl</code></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">Add the ending for each pronoun:</div></div>
+    </div>
+    <table class="conj-table">
+      <tr><th>Pronoun</th><th>Ending</th><th>Example (parler)</th></tr>
+      <tr><td class="pronoun">Je</td><td class="ending">-e</td><td class="verb">je parl<strong>e</strong></td></tr>
+      <tr><td class="pronoun">Tu</td><td class="ending">-es</td><td class="verb">tu parl<strong>es</strong></td></tr>
+      <tr><td class="pronoun">Il/Elle/On</td><td class="ending">-e</td><td class="verb">il parl<strong>e</strong></td></tr>
+      <tr><td class="pronoun">Nous</td><td class="ending">-ons</td><td class="verb">nous parl<strong>ons</strong></td></tr>
+      <tr><td class="pronoun">Vous</td><td class="ending">-ez</td><td class="verb">vous parl<strong>ez</strong></td></tr>
+      <tr><td class="pronoun">Ils/Elles</td><td class="ending">-ent</td><td class="verb">ils parl<strong>ent</strong></td></tr>
+    </table>
+  </div>
+
+  <div id="g2" class="group-content">
+    <p>Verbs ending in <strong>-ir</strong> where the nous/vous/ils forms include <em>-iss-</em>.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">Remove <code>-ir</code> → <strong>stem</strong>. <em>finir</em> → <code>fin</code></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">Add the ending:</div></div>
+    </div>
+    <table class="conj-table">
+      <tr><th>Pronoun</th><th>Ending</th><th>Example (finir)</th></tr>
+      <tr><td class="pronoun">Je</td><td class="ending">-is</td><td class="verb">je fin<strong>is</strong></td></tr>
+      <tr><td class="pronoun">Tu</td><td class="ending">-is</td><td class="verb">tu fin<strong>is</strong></td></tr>
+      <tr><td class="pronoun">Il/Elle/On</td><td class="ending">-it</td><td class="verb">il fin<strong>it</strong></td></tr>
+      <tr><td class="pronoun">Nous</td><td class="ending">-issons</td><td class="verb">nous fin<strong>issons</strong></td></tr>
+      <tr><td class="pronoun">Vous</td><td class="ending">-issez</td><td class="verb">vous fin<strong>issez</strong></td></tr>
+      <tr><td class="pronoun">Ils/Elles</td><td class="ending">-issent</td><td class="verb">ils fin<strong>issent</strong></td></tr>
+    </table>
+  </div>
+
+  <div id="g3" class="group-content">
+    <p>Everything else. Some follow sub-patterns; the most common ones must be memorised.</p>
+    <h3>-DRE verbs (e.g. prendre)</h3>
+    <table class="conj-table">
+      <tr><th>Pronoun</th><th>Example (prendre)</th></tr>
+      <tr><td class="pronoun">Je / Tu</td><td class="verb">je pren<strong>ds</strong> / tu pren<strong>ds</strong></td></tr>
+      <tr><td class="pronoun">Il/Elle/On</td><td class="verb">il pren<strong>d</strong></td></tr>
+      <tr><td class="pronoun">Nous / Vous</td><td class="verb">nous pren<strong>ons</strong> / vous pren<strong>ez</strong></td></tr>
+      <tr><td class="pronoun">Ils/Elles</td><td class="verb">ils pren<strong>nent</strong></td></tr>
+    </table>
+
+    <h3>Essential irregular verbs — must memorise</h3>
+    <table class="conj-table">
+      <tr><th>Pronoun</th><th>être (to be)</th><th>avoir (to have)</th><th>aller (to go)</th></tr>
+      <tr><td class="pronoun">Je</td><td class="verb">suis</td><td class="verb">ai</td><td class="verb">vais</td></tr>
+      <tr><td class="pronoun">Tu</td><td class="verb">es</td><td class="verb">as</td><td class="verb">vas</td></tr>
+      <tr><td class="pronoun">Il/Elle</td><td class="verb">est</td><td class="verb">a</td><td class="verb">va</td></tr>
+      <tr><td class="pronoun">Nous</td><td class="verb">sommes</td><td class="verb">avons</td><td class="verb">allons</td></tr>
+      <tr><td class="pronoun">Vous</td><td class="verb">êtes</td><td class="verb">avez</td><td class="verb">allez</td></tr>
+      <tr><td class="pronoun">Ils/Elles</td><td class="verb">sont</td><td class="verb">ont</td><td class="verb">vont</td></tr>
+    </table>
+
+    <table class="conj-table">
+      <tr><th>Pronoun</th><th>pouvoir (can)</th><th>vouloir (want)</th><th>faire (to do)</th></tr>
+      <tr><td class="pronoun">Je</td><td class="verb">peux</td><td class="verb">veux</td><td class="verb">fais</td></tr>
+      <tr><td class="pronoun">Tu</td><td class="verb">peux</td><td class="verb">veux</td><td class="verb">fais</td></tr>
+      <tr><td class="pronoun">Il/Elle</td><td class="verb">peut</td><td class="verb">veut</td><td class="verb">fait</td></tr>
+      <tr><td class="pronoun">Nous</td><td class="verb">pouvons</td><td class="verb">voulons</td><td class="verb">faisons</td></tr>
+      <tr><td class="pronoun">Vous</td><td class="verb">pouvez</td><td class="verb">voulez</td><td class="verb">faites</td></tr>
+      <tr><td class="pronoun">Ils/Elles</td><td class="verb">peuvent</td><td class="verb">veulent</td><td class="verb">font</td></tr>
+    </table>
+  </div>
+
+  <hr>
+  <h2>50 Essential Verbs</h2>
+  <p>These are the most common verbs you'll need. Learn them a few at a time.</p>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">être</span><span class="ven">to be</span></div>
+    <div class="vocab-item"><span class="vfr">avoir</span><span class="ven">to have</span></div>
+    <div class="vocab-item"><span class="vfr">aller</span><span class="ven">to go</span></div>
+    <div class="vocab-item"><span class="vfr">faire</span><span class="ven">to do / make</span></div>
+    <div class="vocab-item"><span class="vfr">dire</span><span class="ven">to say / tell</span></div>
+    <div class="vocab-item"><span class="vfr">parler</span><span class="ven">to speak</span></div>
+    <div class="vocab-item"><span class="vfr">voir</span><span class="ven">to see</span></div>
+    <div class="vocab-item"><span class="vfr">savoir</span><span class="ven">to know (a fact)</span></div>
+    <div class="vocab-item"><span class="vfr">pouvoir</span><span class="ven">can</span></div>
+    <div class="vocab-item"><span class="vfr">vouloir</span><span class="ven">to want</span></div>
+    <div class="vocab-item"><span class="vfr">devoir</span><span class="ven">must / to owe</span></div>
+    <div class="vocab-item"><span class="vfr">venir</span><span class="ven">to come</span></div>
+    <div class="vocab-item"><span class="vfr">manger</span><span class="ven">to eat</span></div>
+    <div class="vocab-item"><span class="vfr">boire</span><span class="ven">to drink</span></div>
+    <div class="vocab-item"><span class="vfr">prendre</span><span class="ven">to take</span></div>
+    <div class="vocab-item"><span class="vfr">mettre</span><span class="ven">to put</span></div>
+    <div class="vocab-item"><span class="vfr">passer</span><span class="ven">to pass / spend (time)</span></div>
+    <div class="vocab-item"><span class="vfr">porter</span><span class="ven">to wear / carry</span></div>
+    <div class="vocab-item"><span class="vfr">trouver</span><span class="ven">to find</span></div>
+    <div class="vocab-item"><span class="vfr">donner</span><span class="ven">to give</span></div>
+    <div class="vocab-item"><span class="vfr">comprendre</span><span class="ven">to understand</span></div>
+    <div class="vocab-item"><span class="vfr">connaître</span><span class="ven">to know (a person)</span></div>
+    <div class="vocab-item"><span class="vfr">partir</span><span class="ven">to leave</span></div>
+    <div class="vocab-item"><span class="vfr">aimer</span><span class="ven">to love / like</span></div>
+    <div class="vocab-item"><span class="vfr">penser</span><span class="ven">to think</span></div>
+    <div class="vocab-item"><span class="vfr">rester</span><span class="ven">to stay</span></div>
+    <div class="vocab-item"><span class="vfr">arriver</span><span class="ven">to arrive / manage to</span></div>
+    <div class="vocab-item"><span class="vfr">croire</span><span class="ven">to believe / think</span></div>
+    <div class="vocab-item"><span class="vfr">demander</span><span class="ven">to ask</span></div>
+    <div class="vocab-item"><span class="vfr">s'appeler</span><span class="ven">to be called</span></div>
+  </div>
+</div>
+
+<!-- ==================== ARTICLES ==================== -->
+<div id="articles" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>Articles — Le, La, Un, Du…</h1>
+    <p>French has definite articles (the), indefinite articles (a/an), and partitive articles (some). They change based on gender and whether the noun is specific or general.</p>
+  </div>
+
+  <div class="quick-ref">
+    <div class="qr-card">
+      <div class="qr-label">Definite (the)</div>
+      <div class="qr-item"><span class="qr-fr">le</span><span class="qr-en">masc. singular</span></div>
+      <div class="qr-item"><span class="qr-fr">la</span><span class="qr-en">fem. singular</span></div>
+      <div class="qr-item"><span class="qr-fr">l'</span><span class="qr-en">before a vowel/h</span></div>
+      <div class="qr-item"><span class="qr-fr">les</span><span class="qr-en">plural (any gender)</span></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">Indefinite (a / an)</div>
+      <div class="qr-item"><span class="qr-fr">un</span><span class="qr-en">masc. singular</span></div>
+      <div class="qr-item"><span class="qr-fr">une</span><span class="qr-en">fem. singular</span></div>
+      <div class="qr-item"><span class="qr-fr">des</span><span class="qr-en">plural (some)</span></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">Partitive (some)</div>
+      <div class="qr-item"><span class="qr-fr">du</span><span class="qr-en">masc. (= de + le)</span></div>
+      <div class="qr-item"><span class="qr-fr">de la</span><span class="qr-en">fem.</span></div>
+      <div class="qr-item"><span class="qr-fr">de l'</span><span class="qr-en">before vowel/h</span></div>
+      <div class="qr-item"><span class="qr-fr">des</span><span class="qr-en">plural</span></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">In negatives → always <strong>de/d'</strong></div>
+      <div class="qr-item"><span class="qr-fr">pas de</span><span class="qr-en">replaces du/de la/des</span></div>
+      <div class="qr-item"><span class="qr-fr">Je n'ai pas de lait</span><span class="qr-en">I have no milk</span></div>
+    </div>
+  </div>
+
+  <h2>Simple Memory Trick</h2>
+  <div class="tip-box">
+    Think of it this way:<br>
+    <strong>a / an</strong> in English → <strong>un / une</strong> in French<br>
+    <strong>the</strong> in English → <strong>le / la / les</strong> in French<br>
+    <strong>some</strong> in English → <strong>du / de la / des</strong> in French
+  </div>
+
+  <h2>When to use each</h2>
+
+  <div class="rule-card">
+    <div class="rule-title">Definite: le / la / les — "the specific thing"</div>
+    <p>Use when both speaker and listener know exactly what is being referred to.</p>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">Le chat dort sur le sofa.</span><span class="ex-en">The cat sleeps on the sofa. (a specific cat)</span></div>
+      <div class="ex-item"><span class="ex-fr">Ma mère aime le chocolat.</span><span class="ex-en">My mother likes chocolate. (chocolate in general)</span></div>
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-title">Indefinite: un / une — "one of many"</div>
+    <p>Use for something the listener doesn't know about, one instance of something.</p>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">J'ai un ami.</span><span class="ex-en">I have a friend. (one friend among many)</span></div>
+      <div class="ex-item"><span class="ex-fr">Il y a des erreurs dans ce texte.</span><span class="ex-en">There are (some) errors in this text.</span></div>
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-title">Partitive: du / de la — "some quantity of"</div>
+    <p>For uncountable things or abstract nouns where you don't specify the amount.</p>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">Tu veux du chocolat ?</span><span class="ex-en">Do you want some chocolate?</span></div>
+      <div class="ex-item"><span class="ex-fr">J'ai de la chance.</span><span class="ex-en">I'm lucky. (lit: I have some luck)</span></div>
+      <div class="ex-item"><span class="ex-fr">Je prends des vacances.</span><span class="ex-en">I'm taking some holiday.</span></div>
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-title">Negatives: always → de / d'</div>
+    <p>In a negative sentence, all partitive and indefinite articles become <strong>de</strong> (or <strong>d'</strong> before a vowel).</p>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">J'ai de la chance → Je n'ai pas de chance.</span><span class="ex-en">I'm lucky → I'm not lucky.</span></div>
+      <div class="ex-item"><span class="ex-fr">Il y a des erreurs → Il n'y a pas d'erreurs.</span><span class="ex-en">There are errors → There are no errors.</span></div>
+    </div>
+    <div class="tip-box" style="margin-top:10px">
+      <strong>Exception with être:</strong> After être, the article doesn't change in negatives.<br>
+      C'est du pain → Ce n'est pas <em>du</em> pain. (stays "du")
+    </div>
+  </div>
+
+  <hr>
+  <h2>Exercise — Choose the right article</h2>
+  <div class="exercise-block">
+    <div class="ex-title">Fill in the blank</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>Ma mère aime</span> <input type="text" data-answer="le" placeholder="?"> <span>chocolat noir.</span></div>
+      <div class="fill-row"><span>Donne-moi</span> <input type="text" data-answer="du" placeholder="?"> <span>pain s'il te plaît.</span></div>
+      <div class="fill-row"><span>J'ai vu</span> <input type="text" data-answer="un" placeholder="?"> <span>écureuil ce matin.</span></div>
+      <div class="fill-row"><span>Veux-tu</span> <input type="text" data-answer="du" placeholder="?"> <span>beurre sur ton pain ?</span></div>
+      <div class="fill-row"><span>Quelle est</span> <input type="text" data-answer="la" placeholder="?"> <span>capitale du Portugal ?</span></div>
+      <div class="fill-row"><span>Je bois beaucoup</span> <input type="text" data-answer="de" placeholder="?"> <span>thé à la menthe.</span></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">le</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">du</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">un</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">du</span></div>
+      <div class="ak-row"><span class="ak-num">5.</span><span class="ak-ans">la</span></div>
+      <div class="ak-row"><span class="ak-num">6.</span><span class="ak-ans">de</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== POSSESSIVES ==================== -->
+<div id="possessives" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>Possessive Adjectives</h1>
+    <p>Mon/ma/mes mean "my", ton/ta/tes mean "your" etc. The key: they agree with the <em>thing owned</em>, not the owner.</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>The key rule:</strong> If you say "my car" in French, you don't look at yourself — you look at the word for "car". If <em>voiture</em> is feminine, you say <strong>ma</strong> voiture.
+  </div>
+
+  <table class="conj-table">
+    <tr><th></th><th>Masc. singular</th><th>Fem. singular</th><th>Plural</th></tr>
+    <tr><td class="pronoun">My (je)</td><td class="verb">mon</td><td class="verb">ma</td><td class="verb">mes</td></tr>
+    <tr><td class="pronoun">Your (tu)</td><td class="verb">ton</td><td class="verb">ta</td><td class="verb">tes</td></tr>
+    <tr><td class="pronoun">His/Her (il/elle)</td><td class="verb">son</td><td class="verb">sa</td><td class="verb">ses</td></tr>
+    <tr><td class="pronoun">Our (nous)</td><td class="verb">notre</td><td class="verb">notre</td><td class="verb">nos</td></tr>
+    <tr><td class="pronoun">Your (vous)</td><td class="verb">votre</td><td class="verb">votre</td><td class="verb">vos</td></tr>
+    <tr><td class="pronoun">Their (ils/elles)</td><td class="verb">leur</td><td class="verb">leur</td><td class="verb">leurs</td></tr>
+  </table>
+
+  <div class="rule-card">
+    <div class="rule-title">Exception — Before a feminine noun starting with a vowel or h</div>
+    <p>Use the masculine form (mon/ton/son) to avoid the clash of two vowels together.</p>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">sa amie → son amie</span><span class="ex-en">his/her friend (amie starts with a vowel)</span></div>
+    </div>
+  </div>
+
+  <h2>mon/ma vs le mien/la mienne</h2>
+  <div class="rule-card">
+    <div class="rule-title">mon/ma — goes before the noun (adjective)</div>
+    <p>C'est <strong>mon</strong> gâteau. — It's my cake. <br>Voilà <strong>ma</strong> sœur! — Here's my sister!</p>
+  </div>
+  <div class="rule-card">
+    <div class="rule-title">le mien / la mienne — replaces the noun entirely</div>
+    <p>C'est <strong>le mien</strong>. — It's mine. <br>Voilà <strong>la mienne</strong>. — Here's mine.</p>
+  </div>
+
+  <h2>Exercise</h2>
+  <div class="exercise-block">
+    <div class="ex-title">Fill in the possessive adjective</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>Papa a une voiture. C'est</span><input type="text" data-answer="sa" placeholder="?"><span>voiture.</span></div>
+      <div class="fill-row"><span>J'ai un vélo. C'est</span><input type="text" data-answer="mon" placeholder="?"><span>vélo.</span></div>
+      <div class="fill-row"><span>Tu as une amie. C'est</span><input type="text" data-answer="ton" placeholder="?"><span>amie.</span><span class="hint">(starts with vowel!)</span></div>
+      <div class="fill-row"><span>Nous avons des stylos rouges. Ce sont</span><input type="text" data-answer="nos" placeholder="?"><span>stylos.</span></div>
+      <div class="fill-row"><span>Vous avez deux dictionnaires. Ce sont</span><input type="text" data-answer="vos" placeholder="?"><span>dictionnaires.</span></div>
+      <div class="fill-row"><span>J'ai deux frères. Ce sont</span><input type="text" data-answer="mes" placeholder="?"><span>frères.</span></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">sa</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">mon</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">ton</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">nos</span></div>
+      <div class="ak-row"><span class="ak-num">5.</span><span class="ak-ans">vos</span></div>
+      <div class="ak-row"><span class="ak-num">6.</span><span class="ak-ans">mes</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SENTENCES ==================== -->
+<div id="sentences" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>Building Sentences</h1>
+    <p>French sentence structure is very consistent. The word order almost never changes — unlike in English.</p>
+  </div>
+
+  <h2>Affirmative (positive) sentences</h2>
+  <div class="rule-card">
+    <div class="rule-title">Always: Subject → Verb → Complement</div>
+    <p>Le chien attrape la balle. — The dog catches the ball.</p>
+    <p>You can never swap subject and complement in French (in an affirmative sentence).</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>Two complements?</strong> Direct complement first, then indirect:<br>
+    Morgan montre <strong>le chemin</strong> (direct) <strong>à Sasha</strong> (indirect).<br>
+    Morgan shows the way to Sasha.
+  </div>
+
+  <h2>Negative sentences</h2>
+  <div class="rule-card">
+    <div class="rule-title">Subject + ne + Verb + pas + Complement</div>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">Leo n'a pas faim.</span><span class="ex-en">Leo is not hungry.</span></div>
+      <div class="ex-item"><span class="ex-fr">Laura n'est pas gentille.</span><span class="ex-en">Laura is not nice.</span></div>
+      <div class="ex-item"><span class="ex-fr">Sasha ne va pas à l'école.</span><span class="ex-en">Sasha doesn't go to school.</span></div>
+    </div>
+  </div>
+
+  <h2>Negative adverbs</h2>
+  <table class="conj-table">
+    <tr><th>Instead of…</th><th>Use…</th><th>Meaning</th></tr>
+    <tr><td>toujours / parfois</td><td class="verb">ne…jamais</td><td>never</td></tr>
+    <tr><td>encore / toujours</td><td class="verb">ne…plus</td><td>not anymore</td></tr>
+    <tr><td>quelques / certains</td><td class="verb">ne…aucun</td><td>none</td></tr>
+    <tr><td>tout</td><td class="verb">ne…rien</td><td>nothing</td></tr>
+  </table>
+
+  <div class="exercise-block">
+    <div class="ex-title">Reorder these words to make correct sentences</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span style="font-style:italic">habite / à Sydney / Il →</span> <input type="text" data-answer="Il habite à Sydney." placeholder="your answer"></div>
+      <div class="fill-row"><span style="font-style:italic">un café / Je / voudrais →</span> <input type="text" data-answer="Je voudrais un café." placeholder="your answer"></div>
+      <div class="fill-row"><span style="font-style:italic">français / Nous / parlons →</span> <input type="text" data-answer="Nous parlons français." placeholder="your answer"></div>
+      <div class="fill-row"><span style="font-style:italic">le chocolat / aimes / Tu →</span> <input type="text" data-answer="Tu aimes le chocolat." placeholder="your answer"></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">Il habite à Sydney.</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">Je voudrais un café.</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">Nous parlons français.</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">Tu aimes le chocolat.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAST TENSE ==================== -->
+<div id="pasttense" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>Passé Composé</h1>
+    <p>The most common past tense. Formed with a "helper" verb (avoir or être) + the past participle.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-title">The formula</div>
+    <p><strong>Subject + avoir/être (present) + past participle</strong></p>
+    <p>J'ai mangé du kangourou. — I ate kangaroo.</p>
+    <p>Morgan est allée en Tasmanie. — Morgan went to Tasmania.</p>
+  </div>
+
+  <h2>avoir or être?</h2>
+  <div class="tip-box">
+    <strong>Most verbs use avoir.</strong> A specific group of verbs use être — mainly verbs of movement and all reflexive verbs. A handy mnemonic: <strong>DR. & MRS. VANDERTRAMP</strong> (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Retourner, Tomber, Rentrer, Arriver, Mourir, Partir).
+  </div>
+
+  <h3>When using être — the past participle agrees with the subject</h3>
+  <table class="conj-table">
+    <tr><th>Subject</th><th>Ending</th><th>Example</th></tr>
+    <tr><td>Male singular</td><td class="verb">-é</td><td>Il est allé</td></tr>
+    <tr><td>Male plural</td><td class="verb">-és</td><td>Ils sont allés</td></tr>
+    <tr><td>Female singular</td><td class="verb">-ée</td><td>Elle est allée</td></tr>
+    <tr><td>Female plural</td><td class="verb">-ées</td><td>Elles sont allées</td></tr>
+    <tr><td>Mixed group</td><td class="verb">-és</td><td>Ils sont allés (male wins)</td></tr>
+  </table>
+
+  <h2>Past participles by verb group</h2>
+  <table class="conj-table">
+    <tr><th>Group</th><th>Ending</th><th>Examples</th></tr>
+    <tr><td>-er verbs</td><td class="verb">-é</td><td>manger → mangé, aller → allé</td></tr>
+    <tr><td>-ir verbs</td><td class="verb">-i</td><td>finir → fini, choisir → choisi</td></tr>
+    <tr><td>-dre verbs</td><td class="verb">-u</td><td>vendre → vendu, prendre → pris*</td></tr>
+    <tr><td>-oir verbs</td><td class="verb">-u</td><td>voir → vu, pouvoir → pu, vouloir → voulu</td></tr>
+    <tr><td>-ttre verbs</td><td class="verb">-is</td><td>mettre → mis</td></tr>
+  </table>
+
+  <h2>Verbs that can use both avoir AND être</h2>
+  <p>These change meaning depending on which auxiliary you use!</p>
+  <table class="exception-table">
+    <tr><th>Verb</th><th>With être (intransitive)</th><th>With avoir (transitive)</th></tr>
+    <tr><td>descendre</td><td>Elle est descendue. (She went downstairs)</td><td>Elle a descendu les bouteilles. (She brought the bottles down)</td></tr>
+    <tr><td>monter</td><td>Ils sont montés. (They went up)</td><td>Ils ont monté les bagages. (They took luggage upstairs)</td></tr>
+    <tr><td>sortir</td><td>Je suis sorti(e). (I went out)</td><td>J'ai sorti le chien. (I took the dog out)</td></tr>
+    <tr><td>passer</td><td>Je suis passé(e) chez le boulanger. (I passed by the bakery)</td><td>J'ai passé le permis. (I took my driving test)</td></tr>
+  </table>
+
+  <hr>
+  <h2>Exercise — Conjugate to passé composé</h2>
+  <div class="exercise-block">
+    <div class="ex-title">Put these verbs into the past tense</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>J'ai soif et je</span><input type="text" data-answer="ai pris" placeholder="prendre"><span>un café.</span></div>
+      <div class="fill-row"><span>Il</span><input type="text" data-answer="a pris" placeholder="prendre"><span>son parapluie et il</span><input type="text" data-answer="est sorti" placeholder="sortir"></div>
+      <div class="fill-row"><span>Ils</span><input type="text" data-answer="sont allés" placeholder="aller"><span>en vacances l'été dernier.</span></div>
+      <div class="fill-row"><span>Nous</span><input type="text" data-answer="avons commencé" placeholder="commencer"><span>un nouveau cours.</span></div>
+      <div class="fill-row"><span>Vous</span><input type="text" data-answer="avez fait" placeholder="faire"><span>du sport.</span></div>
+      <div class="fill-row"><span>Elles</span><input type="text" data-answer="ont appelé" placeholder="appeler"><span>leurs amis.</span></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">ai pris</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">a pris / est sorti</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">sont allés</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">avons commencé</span></div>
+      <div class="ak-row"><span class="ak-num">5.</span><span class="ak-ans">avez fait</span></div>
+      <div class="ak-row"><span class="ak-num">6.</span><span class="ak-ans">ont appelé</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FUTURE ==================== -->
+<div id="future" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>The Future</h1>
+    <p>Two future tenses: <em>futur proche</em> (near future — going to) and <em>futur simple</em> (simple future — will).</p>
+  </div>
+
+  <h2>Futur Proche — "going to"</h2>
+  <div class="rule-card">
+    <div class="rule-title">Formula: aller (conjugated) + infinitive</div>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">Je vais rester jusqu'à demain.</span><span class="ex-en">I'm going to stay until tomorrow.</span></div>
+      <div class="ex-item"><span class="ex-fr">Ils vont parler.</span><span class="ex-en">They are going to speak.</span></div>
+      <div class="ex-item"><span class="ex-fr">Tu vas manquer le spectacle.</span><span class="ex-en">You are going to miss the show.</span></div>
+    </div>
+  </div>
+
+  <h2>Futur Simple — "will"</h2>
+  <div class="rule-card">
+    <div class="rule-title">Formula: infinitive + endings (-ai, -as, -a, -ons, -ez, -ont)</div>
+    <table class="conj-table" style="margin-top:10px">
+      <tr><th>Pronoun</th><th>Ending</th><th>Example (parler)</th></tr>
+      <tr><td class="pronoun">Je</td><td class="ending">-ai</td><td class="verb">je parler<strong>ai</strong></td></tr>
+      <tr><td class="pronoun">Tu</td><td class="ending">-as</td><td class="verb">tu parler<strong>as</strong></td></tr>
+      <tr><td class="pronoun">Il/Elle/On</td><td class="ending">-a</td><td class="verb">il parler<strong>a</strong></td></tr>
+      <tr><td class="pronoun">Nous</td><td class="ending">-ons</td><td class="verb">nous parler<strong>ons</strong></td></tr>
+      <tr><td class="pronoun">Vous</td><td class="ending">-ez</td><td class="verb">vous parler<strong>ez</strong></td></tr>
+      <tr><td class="pronoun">Ils/Elles</td><td class="ending">-ont</td><td class="verb">ils parler<strong>ont</strong></td></tr>
+    </table>
+  </div>
+
+  <h2>Irregular future stems</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">être → ser-</span><span class="ven">je serai</span></div>
+    <div class="vocab-item"><span class="vfr">avoir → aur-</span><span class="ven">j'aurai</span></div>
+    <div class="vocab-item"><span class="vfr">aller → ir-</span><span class="ven">j'irai</span></div>
+    <div class="vocab-item"><span class="vfr">faire → fer-</span><span class="ven">je ferai</span></div>
+    <div class="vocab-item"><span class="vfr">pouvoir → pourr-</span><span class="ven">je pourrai</span></div>
+    <div class="vocab-item"><span class="vfr">vouloir → voudr-</span><span class="ven">je voudrai</span></div>
+    <div class="vocab-item"><span class="vfr">voir → verr-</span><span class="ven">je verrai</span></div>
+    <div class="vocab-item"><span class="vfr">venir → viendr-</span><span class="ven">je viendrai</span></div>
+    <div class="vocab-item"><span class="vfr">savoir → saur-</span><span class="ven">je saurai</span></div>
+    <div class="vocab-item"><span class="vfr">devoir → devr-</span><span class="ven">je devrai</span></div>
+  </div>
+
+  <div class="exercise-block">
+    <div class="ex-title">FP = futur proche, FS = futur simple</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>Dans deux semaines, elle</span><input type="text" data-answer="va retourner" placeholder="retourner (FP)"><span>à l'école.</span></div>
+      <div class="fill-row"><span>Je lui</span><input type="text" data-answer="enverrai" placeholder="envoyer (FS)"><span>une lettre.</span></div>
+      <div class="fill-row"><span>Dans un mois, vous</span><input type="text" data-answer="allez partir" placeholder="partir (FP)"><span>en vacances.</span></div>
+      <div class="fill-row"><span>Il est en prison, mais dans quelques jours il</span><input type="text" data-answer="s'échappera" placeholder="s'échapper (FS)"><span>.</span></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">va retourner</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">enverrai</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">allez partir</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">s'échappera</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== REFLEXIVE ==================== -->
+<div id="reflexive" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>Reflexive Verbs</h1>
+    <p>These verbs show that the subject does something to themselves. They always come with a reflexive pronoun.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-title">Base verb vs reflexive form</div>
+    <p><strong>raser</strong> = to shave someone else (le barbier rase mon grand-père)<br>
+    <strong>se raser</strong> = to shave yourself (mon oncle se rase)</p>
+  </div>
+
+  <h2>Reflexive pronouns</h2>
+  <table class="conj-table">
+    <tr><th>Subject</th><th>Reflexive pronoun</th><th>Example (se raser)</th></tr>
+    <tr><td class="pronoun">Je</td><td class="verb">me</td><td class="verb">je <strong>me</strong> rase</td></tr>
+    <tr><td class="pronoun">Tu</td><td class="verb">te</td><td class="verb">tu <strong>te</strong> rases</td></tr>
+    <tr><td class="pronoun">Il/Elle/On</td><td class="verb">se</td><td class="verb">il <strong>se</strong> rase</td></tr>
+    <tr><td class="pronoun">Nous</td><td class="verb">nous</td><td class="verb">nous <strong>nous</strong> rasons</td></tr>
+    <tr><td class="pronoun">Vous</td><td class="verb">vous</td><td class="verb">vous <strong>vous</strong> rasez</td></tr>
+    <tr><td class="pronoun">Ils/Elles</td><td class="verb">se</td><td class="verb">ils <strong>se</strong> rasent</td></tr>
+  </table>
+
+  <div class="tip-box">
+    <strong>In spoken French</strong>, "je me" often becomes "j'me" — the vowels blur together. This is normal and natural!
+  </div>
+
+  <h2>Common reflexive verbs</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">se lever</span><span class="ven">to get up</span></div>
+    <div class="vocab-item"><span class="vfr">se coucher</span><span class="ven">to go to bed</span></div>
+    <div class="vocab-item"><span class="vfr">se réveiller</span><span class="ven">to wake up</span></div>
+    <div class="vocab-item"><span class="vfr">s'endormir</span><span class="ven">to fall asleep</span></div>
+    <div class="vocab-item"><span class="vfr">se doucher</span><span class="ven">to take a shower</span></div>
+    <div class="vocab-item"><span class="vfr">s'habiller</span><span class="ven">to get dressed</span></div>
+    <div class="vocab-item"><span class="vfr">se déshabiller</span><span class="ven">to undress</span></div>
+    <div class="vocab-item"><span class="vfr">se laver</span><span class="ven">to wash oneself</span></div>
+    <div class="vocab-item"><span class="vfr">se brosser les dents</span><span class="ven">to brush teeth</span></div>
+    <div class="vocab-item"><span class="vfr">se peigner</span><span class="ven">to comb hair</span></div>
+    <div class="vocab-item"><span class="vfr">s'appeler</span><span class="ven">to be called</span></div>
+    <div class="vocab-item"><span class="vfr">s'asseoir</span><span class="ven">to sit down</span></div>
+    <div class="vocab-item"><span class="vfr">se promener</span><span class="ven">to take a stroll</span></div>
+    <div class="vocab-item"><span class="vfr">s'amuser</span><span class="ven">to have fun</span></div>
+    <div class="vocab-item"><span class="vfr">se souvenir</span><span class="ven">to remember</span></div>
+    <div class="vocab-item"><span class="vfr">se dépêcher</span><span class="ven">to hurry</span></div>
+    <div class="vocab-item"><span class="vfr">se fâcher</span><span class="ven">to get angry</span></div>
+    <div class="vocab-item"><span class="vfr">s'ennuyer</span><span class="ven">to be bored</span></div>
+  </div>
+
+  <div class="exercise-block">
+    <div class="ex-title">Conjugate the reflexive verb</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>Marie</span><input type="text" data-answer="se couche" placeholder="se coucher"><span>à dix heures.</span></div>
+      <div class="fill-row"><span>Nous</span><input type="text" data-answer="nous endormons" placeholder="s'endormir"><span>vite après une soirée.</span></div>
+      <div class="fill-row"><span>Comment vous</span><input type="text" data-answer="vous habillez" placeholder="s'habiller"><span>pour aller au restaurant?</span></div>
+      <div class="fill-row"><span>Marc</span><input type="text" data-answer="se dépêche" placeholder="se dépêcher"><span>pour prendre le train.</span></div>
+      <div class="fill-row"><span>Les enfants ne</span><input type="text" data-answer="s'ennuient" placeholder="s'ennuyer"><span>jamais.</span></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">se couche</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">nous endormons</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">vous habillez</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">se dépêche</span></div>
+      <div class="ak-row"><span class="ak-num">5.</span><span class="ak-ans">s'ennuient</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== IMPARFAIT ==================== -->
+<div id="imparfait" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>L'Imparfait</h1>
+    <p>The imperfect tense. Used for past habits, ongoing past states, and descriptions of how things were.</p>
+  </div>
+
+  <h2>When to use it</h2>
+  <div class="rule-card">
+    <div class="rule-title">Ongoing states / descriptions in the past</div>
+    <p>Il faisait froid, les arbres étaient gelés. — It was cold, the trees were frozen.</p>
+  </div>
+  <div class="rule-card">
+    <div class="rule-title">Repeated actions or habits in the past</div>
+    <p>Quand j'étais enfant, j'allais souvent voir les canards. — When I was a child, I often went to see the ducks.</p>
+  </div>
+  <div class="rule-card">
+    <div class="rule-title">Contrast: past vs now</div>
+    <p>Aujourd'hui je dors peu, alors qu'avant je dormais beaucoup. — Now I sleep little, whereas before I slept a lot.</p>
+  </div>
+
+  <h2>How to conjugate</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body">Take the verb in the present tense.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body">Conjugate it with <em>nous</em>. Example: venir → <code>nous venons</code></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body">Drop the <em>-ons</em> → <code>ven-</code> (the stem)</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body">Add the imperfect endings: <code>-ais, -ais, -ait, -ions, -iez, -aient</code></div></div>
+  </div>
+
+  <table class="conj-table">
+    <tr><th>Pronoun</th><th>Ending</th><th>venir</th><th>aller</th></tr>
+    <tr><td class="pronoun">Je</td><td class="ending">-ais</td><td class="verb">venais</td><td class="verb">allais</td></tr>
+    <tr><td class="pronoun">Tu</td><td class="ending">-ais</td><td class="verb">venais</td><td class="verb">allais</td></tr>
+    <tr><td class="pronoun">Il/Elle</td><td class="ending">-ait</td><td class="verb">venait</td><td class="verb">allait</td></tr>
+    <tr><td class="pronoun">Nous</td><td class="ending">-ions</td><td class="verb">venions</td><td class="verb">allions</td></tr>
+    <tr><td class="pronoun">Vous</td><td class="ending">-iez</td><td class="verb">veniez</td><td class="verb">alliez</td></tr>
+    <tr><td class="pronoun">Ils/Elles</td><td class="ending">-aient</td><td class="verb">venaient</td><td class="verb">allaient</td></tr>
+  </table>
+
+  <div class="tip-box">
+    <strong>Exception: être.</strong> The stem is <em>ét-</em> (not from the nous form).<br>
+    j'étais, tu étais, il était, nous étions, vous étiez, ils étaient.
+  </div>
+
+  <div class="exercise-block">
+    <div class="ex-title">Conjugate to imparfait</div>
+    <div class="fill-blank">
+      <div class="fill-row"><span>Maryline</span><input type="text" data-answer="jouait" placeholder="jouer"><span>avec son frère pendant que leurs parents</span><input type="text" data-answer="regardaient" placeholder="regarder"><span>la télévision.</span></div>
+      <div class="fill-row"><span>Nous</span><input type="text" data-answer="allions" placeholder="aller"><span>à la mer chaque matin.</span></div>
+      <div class="fill-row"><span>Vous</span><input type="text" data-answer="étiez" placeholder="être"><span>au bord des larmes.</span></div>
+      <div class="fill-row"><span>Mon chien</span><input type="text" data-answer="faisait" placeholder="faire"><span>des trous dans le sable.</span></div>
+    </div>
+    <button class="check-btn" onclick="checkAnswers(this)">Check</button>
+    <button class="show-btn" onclick="toggleAnswers(this)">Show answers</button>
+    <div class="answer-key">
+      <div class="ak-row"><span class="ak-num">1.</span><span class="ak-ans">jouait / regardaient</span></div>
+      <div class="ak-row"><span class="ak-num">2.</span><span class="ak-ans">allions</span></div>
+      <div class="ak-row"><span class="ak-num">3.</span><span class="ak-ans">étiez</span></div>
+      <div class="ak-row"><span class="ak-num">4.</span><span class="ak-ans">faisait</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRONOUNS ==================== -->
+<div id="pronouns" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Grammar</div>
+    <h1>Object Pronouns</h1>
+    <p>Instead of repeating a noun, you replace it with a pronoun. These go before the verb in French.</p>
+  </div>
+
+  <div class="quick-ref">
+    <div class="qr-card">
+      <div class="qr-label">Direct object (le/la/les)</div>
+      <div class="qr-item"><span class="qr-fr">le</span><span class="qr-en">masc. singular thing</span></div>
+      <div class="qr-item"><span class="qr-fr">la</span><span class="qr-en">fem. singular thing</span></div>
+      <div class="qr-item"><span class="qr-fr">l'</span><span class="qr-en">before vowel/h</span></div>
+      <div class="qr-item"><span class="qr-fr">les</span><span class="qr-en">plural things</span></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">Indirect object (lui/leur)</div>
+      <div class="qr-item"><span class="qr-fr">lui</span><span class="qr-en">to him/her (singular)</span></div>
+      <div class="qr-item"><span class="qr-fr">leur</span><span class="qr-en">to them (plural)</span></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">en — replaces de + noun</div>
+      <div class="qr-item"><span class="qr-fr">J'en ai envie.</span><span class="qr-en">I want some of it.</span></div>
+      <div class="qr-item"><span class="qr-fr">J'en veux un kilo.</span><span class="qr-en">I want a kilo of it.</span></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">y — replaces à + place/thing</div>
+      <div class="qr-item"><span class="qr-fr">J'y vais.</span><span class="qr-en">I'm going there.</span></div>
+      <div class="qr-item"><span class="qr-fr">J'y pense.</span><span class="qr-en">I'm thinking about it.</span></div>
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-title">Examples in action</div>
+    <div class="examples" style="margin-top:10px">
+      <div class="ex-item"><span class="ex-fr">La prof surveille ses élèves → La prof les surveille.</span><span class="ex-en">The teacher watches them.</span></div>
+      <div class="ex-item"><span class="ex-fr">John écoute un CD → John l'écoute.</span><span class="ex-en">John listens to it.</span></div>
+      <div class="ex-item"><span class="ex-fr">Papy lit une histoire à ses petits-enfants → Papy leur lit une histoire.</span><span class="ex-en">Grandpa reads them a story.</span></div>
+      <div class="ex-item"><span class="ex-fr">Je vais chez le dentiste → J'y vais.</span><span class="ex-en">I'm going there.</span></div>
+    </div>
+  </div>
+
+  <h2>Personal Pronouns — Quick Reference</h2>
+  <table class="conj-table">
+    <tr><th>Subject</th><th>Stress / Emphatic</th><th>Possessive</th></tr>
+    <tr><td class="verb">Je (I)</td><td class="verb">Moi</td><td class="verb">Mon/Ma/Mes</td></tr>
+    <tr><td class="verb">Tu (You)</td><td class="verb">Toi</td><td class="verb">Ton/Ta/Tes</td></tr>
+    <tr><td class="verb">Il (He)</td><td class="verb">Lui</td><td class="verb">Son/Sa/Ses</td></tr>
+    <tr><td class="verb">Elle (She)</td><td class="verb">Elle</td><td class="verb">Son/Sa/Ses</td></tr>
+    <tr><td class="verb">Nous (We)</td><td class="verb">Nous</td><td class="verb">Notre/Nos</td></tr>
+    <tr><td class="verb">Vous (You)</td><td class="verb">Vous</td><td class="verb">Votre/Vos</td></tr>
+    <tr><td class="verb">Ils (They m)</td><td class="verb">Eux</td><td class="verb">Leur/Leurs</td></tr>
+    <tr><td class="verb">Elles (They f)</td><td class="verb">Elles</td><td class="verb">Leur/Leurs</td></tr>
+  </table>
+</div>
+
+<!-- ==================== HOTEL ==================== -->
+<div id="hotel" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Practical French</div>
+    <h1>À l'Hôtel</h1>
+    <p>Everything you need for checking in, asking about facilities, and checking out.</p>
+  </div>
+
+  <h2>Booking & Check-in</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">Je voudrais réserver une chambre pour [X] nuits.</span><span class="ven">I'd like to book a room for [X] nights.</span></div>
+    <div class="vocab-item"><span class="vfr">J'ai une réservation au nom de [nom].</span><span class="ven">I have a reservation under [name].</span></div>
+    <div class="vocab-item"><span class="vfr">Une chambre simple / double</span><span class="ven">Single / double room</span></div>
+    <div class="vocab-item"><span class="vfr">Une chambre avec vue mer</span><span class="ven">Room with sea view</span></div>
+    <div class="vocab-item"><span class="vfr">Est-ce que le petit-déjeuner est inclus ?</span><span class="ven">Is breakfast included?</span></div>
+    <div class="vocab-item"><span class="vfr">À quelle heure est le check-out ?</span><span class="ven">What time is check-out?</span></div>
+  </div>
+
+  <h2>Facilities & Problems</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">Quel est le code Wi-Fi ?</span><span class="ven">What's the Wi-Fi code?</span></div>
+    <div class="vocab-item"><span class="vfr">La clim ne fonctionne pas.</span><span class="ven">The AC isn't working.</span></div>
+    <div class="vocab-item"><span class="vfr">Ma clé ne fonctionne pas.</span><span class="ven">My key doesn't work.</span></div>
+    <div class="vocab-item"><span class="vfr">Vous pouvez apporter des serviettes ?</span><span class="ven">Can you bring towels?</span></div>
+    <div class="vocab-item"><span class="vfr">Y a-t-il une consigne à bagages ?</span><span class="ven">Is there luggage storage?</span></div>
+    <div class="vocab-item"><span class="vfr">Pouvez-vous m'appeler un taxi ?</span><span class="ven">Can you call me a taxi?</span></div>
+  </div>
+
+  <h2>Check-out</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">Je voudrais régler ma note.</span><span class="ven">I'd like to settle my bill.</span></div>
+    <div class="vocab-item"><span class="vfr">Je peux payer par carte ?</span><span class="ven">Can I pay by card?</span></div>
+    <div class="vocab-item"><span class="vfr">En espèces</span><span class="ven">By cash</span></div>
+    <div class="vocab-item"><span class="vfr">Avez-vous une navette pour l'aéroport ?</span><span class="ven">Is there an airport shuttle?</span></div>
+  </div>
+
+  <hr>
+  <h2>Sample Dialogue — Check-in</h2>
+  <div class="dialogue">
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Bonjour, j'ai une réservation au nom de Walter.<br><span class="translation">Hello, I have a reservation under the name Walter.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Réceptionniste</span>
+      <div class="dialogue-text">Bonjour, bienvenue. Je peux voir votre passeport s'il vous plaît ?<br><span class="translation">Hello, welcome. May I see your passport please?</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Bien sûr, voici.<br><span class="translation">Of course, here you go.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Réceptionniste</span>
+      <div class="dialogue-text">Voici votre clé. Chambre 312, troisième étage. Le petit-déjeuner est inclus.<br><span class="translation">Here's your key. Room 312, third floor. Breakfast is included.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Le petit-déjeuner est servi entre quelle heure et quelle heure ?<br><span class="translation">What time is breakfast served?</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Réceptionniste</span>
+      <div class="dialogue-text">Entre 7h et 10h, dans la salle de petit-déjeuner au bout du hall, à droite.<br><span class="translation">Between 7 and 10, in the breakfast room down the hall on the right.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Merci beaucoup. Bonne journée !<br><span class="translation">Thank you very much. Have a good day!</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Réceptionniste</span>
+      <div class="dialogue-text">Je vous en prie. Bonne journée à vous aussi !<br><span class="translation">You're welcome. Good day to you too!</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RESTAURANT ==================== -->
+<div id="restaurant" class="section">
+  <div class="section-hero">
+    <div class="eyebrow">Practical French</div>
+    <h1>Au Restaurant</h1>
+    <p>From booking a table to paying the bill — all the French you need for dining out.</p>
+  </div>
+
+  <h2>Booking & Arrival</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">Je voudrais réserver une table pour 2 à 20h.</span><span class="ven">I'd like to book a table for 2 at 8pm.</span></div>
+    <div class="vocab-item"><span class="vfr">J'ai une réservation au nom de Walter.</span><span class="ven">I have a reservation under Walter.</span></div>
+    <div class="vocab-item"><span class="vfr">Une table en terrasse / à l'intérieur</span><span class="ven">Outside / inside table</span></div>
+    <div class="vocab-item"><span class="vfr">Où sont les toilettes ?</span><span class="ven">Where are the restrooms?</span></div>
+  </div>
+
+  <h2>Ordering</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">On pourrait voir la carte ?</span><span class="ven">Could we see the menu?</span></div>
+    <div class="vocab-item"><span class="vfr">Quelles sont les spécialités de la maison ?</span><span class="ven">What are the house specialties?</span></div>
+    <div class="vocab-item"><span class="vfr">Je vais prendre…</span><span class="ven">I'll have…</span></div>
+    <div class="vocab-item"><span class="vfr">Pour moi, ce sera…</span><span class="ven">For me, it'll be…</span></div>
+    <div class="vocab-item"><span class="vfr">Je suis allergique à [aliment].</span><span class="ven">I'm allergic to [food].</span></div>
+    <div class="vocab-item"><span class="vfr">Est-ce que ce plat est épicé ?</span><span class="ven">Is this dish spicy?</span></div>
+    <div class="vocab-item"><span class="vfr">Vous pouvez me recommander un vin ?</span><span class="ven">Can you recommend a wine?</span></div>
+    <div class="vocab-item"><span class="vfr">La même chose, s'il vous plaît.</span><span class="ven">The same thing, please.</span></div>
+  </div>
+
+  <h2>Meat doneness</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">Bleu</span><span class="ven">Rare (almost raw)</span></div>
+    <div class="vocab-item"><span class="vfr">Saignant</span><span class="ven">Medium rare</span></div>
+    <div class="vocab-item"><span class="vfr">À point</span><span class="ven">Medium</span></div>
+    <div class="vocab-item"><span class="vfr">Bien cuit</span><span class="ven">Well done</span></div>
+  </div>
+
+  <h2>Paying</h2>
+  <div class="vocab-2col">
+    <div class="vocab-item"><span class="vfr">L'addition, s'il vous plaît.</span><span class="ven">The bill, please.</span></div>
+    <div class="vocab-item"><span class="vfr">Je peux payer par carte ?</span><span class="ven">Can I pay by card?</span></div>
+    <div class="vocab-item"><span class="vfr">Je peux avoir un doggy bag ?</span><span class="ven">Can I have a takeaway box?</span></div>
+    <div class="vocab-item"><span class="vfr">C'était délicieux !</span><span class="ven">It was delicious!</span></div>
+  </div>
+
+  <hr>
+  <h2>Sample Dialogue</h2>
+  <div class="dialogue">
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Bonjour, je voudrais une table pour deux, s'il vous plaît.<br><span class="translation">Hello, a table for two please.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Serveur</span>
+      <div class="dialogue-text">Bien sûr, suivez-moi. Vous souhaitez boire quelque chose pour commencer ?<br><span class="translation">Of course, follow me. Would you like something to drink to start?</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Un verre de vin rouge pour moi, et un Perrier pour mon amie.<br><span class="translation">A glass of red wine for me, and a Perrier for my friend.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Serveur</span>
+      <div class="dialogue-text">Et pour commencer, que souhaitez-vous en entrée ?<br><span class="translation">And for your starter, what would you like?</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Pour moi, ce sera la salade de chèvre chaud. Et pour le plat principal, le steak-frites, saignant, s'il vous plaît.<br><span class="translation">For me, the warm goat's cheese salad. And for the main, steak and fries, medium-rare, please.</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker staff">Serveur</span>
+      <div class="dialogue-text">Parfait. Souhaitez-vous un dessert après le repas ?<br><span class="translation">Perfect. Would you like a dessert after the meal?</span></div>
+    </div>
+    <div class="dialogue-line">
+      <span class="dialogue-speaker client">Client</span>
+      <div class="dialogue-text">Oui, une crème brûlée, s'il vous plaît. Et l'addition quand vous pouvez.<br><span class="translation">Yes, a crème brûlée please. And the bill when you can.</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Alphabet data
+  const alphabet = [
+    ['A','ah'],['B','beh'],['C','seh'],['D','deh'],
+    ['E','errh'],['F','eff'],['G','zheh'],['H','ahsh'],
+    ['I','ee'],['J','zhee'],['K','kah'],['L','ell'],
+    ['M','em'],['N','en'],['O','oh'],['P','peh'],
+    ['Q','koo'],['R','air'],['S','ess'],['T','teh'],
+    ['U','ooh'],['V','veh'],['W','doo-blah-veh'],['X','eeks'],
+    ['Y','ee-grek'],['Z','zed']
+  ];
+  const grid = document.getElementById('alphabetGrid');
+  alphabet.forEach(([l, p]) => {
+    const card = document.createElement('div');
+    card.className = 'letter-card';
+    card.innerHTML = `<span class="fr-letter">${l}</span><span class="pronunciation">${p}</span>`;
+    card.onclick = () => {
+      document.querySelectorAll('.letter-card').forEach(c => c.classList.remove('highlight'));
+      card.classList.add('highlight');
+    };
+    grid.appendChild(card);
+  });
+
+  // Section navigation
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Accordion
+  function toggleAccordion(header) {
+    const body = header.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    // close all in same accordion
+    header.closest('.accordion').querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+    header.closest('.accordion').querySelectorAll('.accordion-header').forEach(h => h.classList.remove('open'));
+    if (!isOpen) {
+      body.classList.add('open');
+      header.classList.add('open');
+    }
+  }
+
+  // Verb group tabs
+  function showGroup(tab, groupId) {
+    tab.closest('.section').querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
+    tab.closest('.section').querySelectorAll('.group-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(groupId).classList.add('active');
+  }
+
+  // Exercise checking
+  function checkAnswers(btn) {
+    const block = btn.closest('.exercise-block');
+    const inputs = block.querySelectorAll('input[data-answer]');
+    inputs.forEach(input => {
+      const userAns = input.value.trim().toLowerCase().replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').replace(/[î]/g,'i').replace(/[ô]/g,'o').replace(/[û]/g,'u').replace(/[ç]/g,'c');
+      const correctAns = input.dataset.answer.trim().toLowerCase().replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').replace(/[î]/g,'i').replace(/[ô]/g,'o').replace(/[û]/g,'u').replace(/[ç]/g,'c');
+      input.classList.remove('correct','wrong');
+      if (userAns === '' ) return;
+      if (correctAns.includes(userAns) || userAns.includes(correctAns)) {
+        input.classList.add('correct');
+      } else {
+        input.classList.add('wrong');
+      }
+    });
+  }
+
+  function toggleAnswers(btn) {
+    const block = btn.closest('.exercise-block');
+    const key = block.querySelector('.answer-key');
+    key.classList.toggle('visible');
+    btn.textContent = key.classList.contains('visible') ? 'Hide answers' : 'Show answers';
+  }
+</script>
+</body>
+</html>
