@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les adjectifs possessifs — A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fbf9f2;
+    --paper-line: #b9d0e8;
+    --margin-line: #e0a3a3;
+    --ink: #1f3350;
+    --ink-soft: #4a5a72;
+    --accent: #2f5f8a;
+    --good: #3f7d4f;
+    --good-bg: #e7f3e9;
+    --bad: #b6473c;
+    --bad-bg: #fbeae8;
+    --card-bg: #ffffff;
+    --card-border: #d9dde3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14181f;
+      --paper-line: #263447;
+      --margin-line: #4a2f37;
+      --ink: #eef1f6;
+      --ink-soft: #aab4c4;
+      --accent: #7fb3e0;
+      --good: #7ecf8e;
+      --good-bg: #1c2e20;
+      --bad: #e28379;
+      --bad-bg: #33201f;
+      --card-bg: #1b212c;
+      --card-border: #2c3444;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14181f;
+    --paper-line: #263447;
+    --margin-line: #4a2f37;
+    --ink: #eef1f6;
+    --ink-soft: #aab4c4;
+    --accent: #7fb3e0;
+    --good: #7ecf8e;
+    --good-bg: #1c2e20;
+    --bad: #e28379;
+    --bad-bg: #33201f;
+    --card-bg: #1b212c;
+    --card-border: #2c3444;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 2.2em;
+    background-position: 0 5.2em;
+    color: var(--ink);
+    font-family: 'Karla', system-ui, sans-serif;
+    line-height: 1.55;
+    padding: 0 0 4rem;
+  }
+
+  .margin-rule {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: max(1.4rem, calc(50vw - 340px));
+    width: 2px;
+    background: var(--margin-line);
+    opacity: 0.55;
+    z-index: 0;
+  }
+  @media (max-width: 640px) {
+    .margin-rule { left: 1.1rem; }
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 0 2.4rem;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 2rem 1.2rem 0 2rem; }
+  }
+
+  header h1 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 2.6rem;
+    margin: 0 0 0.1em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  header p.sub {
+    margin: 0 0 1.8rem;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .scoreboard {
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    padding: 0.8rem 0 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px dashed var(--card-border);
+    z-index: 5;
+  }
+  .score-label {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
+    color: var(--accent);
+  }
+  #score-count { font-weight: 700; }
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--card-border);
+    color: var(--ink-soft);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  details.reminder {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    margin: 1.2rem 0 2rem;
+  }
+  details.reminder summary {
+    cursor: pointer;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2rem;
+    color: var(--accent);
+  }
+  table.recap {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.8rem;
+    font-size: 0.92rem;
+  }
+  table.recap th, table.recap td {
+    text-align: left;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+  table.recap th { color: var(--ink-soft); font-weight: 700; }
+
+  section.exo {
+    margin-bottom: 2.4rem;
+  }
+  section.exo h2 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.6rem;
+    margin: 0 0 0.9rem;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  section.exo h2 .num {
+    color: var(--accent);
+  }
+
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    font-size: 1.05rem;
+  }
+  .item .txt { color: var(--ink); }
+
+  input.blank {
+    font-family: inherit;
+    font-size: 1rem;
+    width: 6.5rem;
+    padding: 0.35rem 0.5rem;
+    border: none;
+    border-bottom: 2px solid var(--ink-soft);
+    background: transparent;
+    color: var(--ink);
+    text-align: center;
+  }
+  input.blank:focus {
+    outline: none;
+    border-bottom-color: var(--accent);
+  }
+  input.blank.correct { border-bottom-color: var(--good); background: var(--good-bg); border-radius: 4px 4px 0 0;}
+  input.blank.incorrect { border-bottom-color: var(--bad); background: var(--bad-bg); border-radius: 4px 4px 0 0;}
+
+  .answer-hint {
+    font-size: 0.85rem;
+    color: var(--bad);
+    display: none;
+  }
+  .answer-hint.show { display: inline; }
+
+  .choices {
+    display: inline-flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .choice-btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .choice-btn:hover { border-color: var(--accent); }
+  .choice-btn.selected { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+  .choice-btn.correct { border-color: var(--good); background: var(--good-bg); color: var(--good); }
+  .choice-btn.incorrect { border-color: var(--bad); background: var(--bad-bg); color: var(--bad); }
+
+  .check-btn {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.15rem;
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    padding: 0.55rem 1.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.3rem;
+  }
+  .check-btn:hover { filter: brightness(1.08); }
+  .check-btn:active { transform: translateY(1px); }
+
+  .exo-feedback {
+    font-size: 0.92rem;
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+    min-height: 1.2em;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+<div class="margin-rule" aria-hidden="true"></div>
+<div class="wrap">
+  <header>
+    <h1>Les adjectifs possessifs</h1>
+    <p class="sub">Exercices niveau A1 — complète, choisis, vérifie tes réponses.</p>
+  </header>
+
+  <div class="scoreboard">
+    <span class="score-label">Score : <span id="score-count">0</span> / <span id="score-total">0</span></span>
+    <button class="reset-btn" id="reset-all">Recommencer</button>
+  </div>
+
+  <details class="reminder">
+    <summary>📎 Rappel des formes</summary>
+    <table class="recap">
+      <tr><th></th><th>masc. sing.</th><th>fém. sing.</th><th>pluriel</th></tr>
+      <tr><td>je</td><td>mon</td><td>ma</td><td>mes</td></tr>
+      <tr><td>tu</td><td>ton</td><td>ta</td><td>tes</td></tr>
+      <tr><td>il / elle</td><td>son</td><td>sa</td><td>ses</td></tr>
+      <tr><td>nous</td><td colspan="2">notre</td><td>nos</td></tr>
+      <tr><td>vous</td><td colspan="2">votre</td><td>vos</td></tr>
+      <tr><td>ils / elles</td><td colspan="2">leur</td><td>leurs</td></tr>
+    </table>
+  </details>
+
+  <!-- EXERCICE 1 -->
+  <section class="exo" data-exo="1">
+    <h2><span class="num">1.</span> Complète avec mon / ma / mes</h2>
+    <div class="item"><span class="txt">1. C'est</span><input class="blank" data-answer="mon" maxlength="6"><span class="txt">frère. Il s'appelle Paul.</span></div>
+    <div class="item"><span class="txt">2. J'aime</span><input class="blank" data-answer="mon" maxlength="6"><span class="txt">école.</span></div>
+    <div class="item"><span class="txt">3. Où sont</span><input class="blank" data-answer="mes" maxlength="6"><span class="txt">clés ?</span></div>
+    <div class="item"><span class="txt">4.</span><input class="blank" data-answer="ma" maxlength="6"><span class="txt">mère travaille à l'hôpital.</span></div>
+    <div class="item"><span class="txt">5. Voici</span><input class="blank" data-answer="mes" maxlength="6"><span class="txt">amis, Julie et Marc.</span></div>
+    <div class="item"><span class="txt">6.</span><input class="blank" data-answer="mon" maxlength="6"><span class="txt">chat s'appelle Minou.</span></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 2 -->
+  <section class="exo" data-exo="2">
+    <h2><span class="num">2.</span> Complète avec ton / ta / tes</h2>
+    <div class="item"><span class="txt">1. Comment s'appelle</span><input class="blank" data-answer="ta" maxlength="6"><span class="txt">sœur ?</span></div>
+    <div class="item"><span class="txt">2. C'est</span><input class="blank" data-answer="ton" maxlength="6"><span class="txt">stylo ?</span></div>
+    <div class="item"><span class="txt">3. J'aime bien</span><input class="blank" data-answer="tes" maxlength="6"><span class="txt">chaussures.</span></div>
+    <div class="item"><span class="txt">4. Où habite</span><input class="blank" data-answer="ta" maxlength="6"><span class="txt">famille ?</span></div>
+    <div class="item"><span class="txt">5.</span><input class="blank" data-answer="ton" maxlength="6"><span class="txt">idée est excellente !</span></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 3 -->
+  <section class="exo" data-exo="3">
+    <h2><span class="num">3.</span> Complète avec son / sa / ses</h2>
+    <div class="item"><span class="txt">1. Marie adore</span><input class="blank" data-answer="son" maxlength="6"><span class="txt">chien.</span></div>
+    <div class="item"><span class="txt">2. Thomas cherche</span><input class="blank" data-answer="ses" maxlength="6"><span class="txt">lunettes.</span></div>
+    <div class="item"><span class="txt">3. Il aime beaucoup</span><input class="blank" data-answer="son" maxlength="6"><span class="txt">travail.</span></div>
+    <div class="item"><span class="txt">4. Elle appelle</span><input class="blank" data-answer="son" maxlength="6"><span class="txt">amie tous les jours.</span></div>
+    <div class="item"><span class="txt">5. Le professeur corrige</span><input class="blank" data-answer="ses" maxlength="6"><span class="txt">copies.</span></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 4 -->
+  <section class="exo" data-exo="4">
+    <h2><span class="num">4.</span> Complète avec notre / nos</h2>
+    <div class="item"><span class="txt">1.</span><input class="blank" data-answer="notre" maxlength="8"><span class="txt">classe est grande.</span></div>
+    <div class="item"><span class="txt">2.</span><input class="blank" data-answer="nos" maxlength="8"><span class="txt">professeurs sont sympathiques.</span></div>
+    <div class="item"><span class="txt">3. C'est</span><input class="blank" data-answer="notre" maxlength="8"><span class="txt">maison.</span></div>
+    <div class="item"><span class="txt">4.</span><input class="blank" data-answer="nos" maxlength="8"><span class="txt">vacances commencent demain.</span></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 5 -->
+  <section class="exo" data-exo="5">
+    <h2><span class="num">5.</span> Complète avec votre / vos</h2>
+    <div class="item"><span class="txt">1. Quel est</span><input class="blank" data-answer="votre" maxlength="8"><span class="txt">nom ?</span></div>
+    <div class="item"><span class="txt">2.</span><input class="blank" data-answer="vos" maxlength="8"><span class="txt">enfants sont adorables.</span></div>
+    <div class="item"><span class="txt">3. C'est</span><input class="blank" data-answer="votre" maxlength="8"><span class="txt">voiture ?</span></div>
+    <div class="item"><span class="txt">4. J'aime</span><input class="blank" data-answer="vos" maxlength="8"><span class="txt">idées.</span></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 6 -->
+  <section class="exo" data-exo="6">
+    <h2><span class="num">6.</span> Complète avec leur / leurs</h2>
+    <div class="item"><span class="txt">1. Les enfants jouent avec</span><input class="blank" data-answer="leurs" maxlength="8"><span class="txt">jouets.</span></div>
+    <div class="item"><span class="txt">2. C'est</span><input class="blank" data-answer="leur" maxlength="8"><span class="txt">maison.</span></div>
+    <div class="item"><span class="txt">3. Ils adorent</span><input class="blank" data-answer="leurs" maxlength="8"><span class="txt">grands-parents.</span></div>
+    <div class="item"><span class="txt">4. Elles font</span><input class="blank" data-answer="leurs" maxlength="8"><span class="txt">devoirs.</span></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 7 : QCM -->
+  <section class="exo" data-exo="7">
+    <h2><span class="num">7.</span> Choisis la bonne réponse</h2>
+
+    <div class="item" data-qcm data-answer="mon">
+      <span class="txt">1. C'est ___ sac à dos.</span>
+      <span class="choices">
+        <button class="choice-btn" data-value="mon">mon</button>
+        <button class="choice-btn" data-value="ma">ma</button>
+      </span>
+    </div>
+    <div class="item" data-qcm data-answer="son">
+      <span class="txt">2. Il aime ___ travail.</span>
+      <span class="choices">
+        <button class="choice-btn" data-value="son">son</button>
+        <button class="choice-btn" data-value="sa">sa</button>
+      </span>
+    </div>
+    <div class="item" data-qcm data-answer="nos">
+      <span class="txt">3. ___ amis arrivent bientôt.</span>
+      <span class="choices">
+        <button class="choice-btn" data-value="notre">notre</button>
+        <button class="choice-btn" data-value="nos">nos</button>
+      </span>
+    </div>
+    <div class="item" data-qcm data-answer="ses">
+      <span class="txt">4. Elle cherche ___ lunettes.</span>
+      <span class="choices">
+        <button class="choice-btn" data-value="son">son</button>
+        <button class="choice-btn" data-value="ses">ses</button>
+      </span>
+    </div>
+    <div class="item" data-qcm data-answer="ton">
+      <span class="txt">5. C'est ___ livre ?</span>
+      <span class="choices">
+        <button class="choice-btn" data-value="ton">ton</button>
+        <button class="choice-btn" data-value="ta">ta</button>
+      </span>
+    </div>
+    <div class="item" data-qcm data-answer="leurs">
+      <span class="txt">6. ___ parents habitent à Paris.</span>
+      <span class="choices">
+        <button class="choice-btn" data-value="leur">leur</button>
+        <button class="choice-btn" data-value="leurs">leurs</button>
+      </span>
+    </div>
+
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <!-- EXERCICE 8 -->
+  <section class="exo" data-exo="8">
+    <h2><span class="num">8.</span> Transforme (comme dans l'exemple)</h2>
+    <p class="sub" style="margin:-0.3rem 0 1rem;">Exemple : le livre de Paul → son livre</p>
+    <div class="item"><span class="txt">1. la voiture de Marie →</span><input class="blank" data-answer="sa voiture" maxlength="16" style="width:8.5rem;"></div>
+    <div class="item"><span class="txt">2. les stylos des élèves →</span><input class="blank" data-answer="leurs stylos" maxlength="16" style="width:9rem;"></div>
+    <div class="item"><span class="txt">3. la maison de mes parents →</span><input class="blank" data-answer="leur maison" maxlength="16" style="width:9rem;"></div>
+    <div class="item"><span class="txt">4. le sac de Sophie →</span><input class="blank" data-answer="son sac" maxlength="16" style="width:7rem;"></div>
+    <div class="item"><span class="txt">5. les amis de Thomas et Julie →</span><input class="blank" data-answer="leurs amis" maxlength="16" style="width:8.5rem;"></div>
+    <button class="check-btn">Vérifier</button>
+    <div class="exo-feedback"></div>
+  </section>
+
+  <footer>Fiche FLE — niveau A1 · adjectifs possessifs</footer>
+</div>
+
+<button class="theme-toggle" id="theme-toggle">🌓 Thème</button>
+
+<script>
+(function () {
+  const norm = s => (s || "")
+    .toString()
+    .trim()
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // retire les accents pour la comparaison
+
+  const scoreCountEl = document.getElementById('score-count');
+  const scoreTotalEl = document.getElementById('score-total');
+
+  function countTotalItems() {
+    const blanks = document.querySelectorAll('input.blank').length;
+    const qcms = document.querySelectorAll('[data-qcm]').length;
+    return blanks + qcms;
+  }
+  scoreTotalEl.textContent = countTotalItems();
+
+  function recomputeScore() {
+    let score = 0;
+    document.querySelectorAll('input.blank').forEach(inp => {
+      if (inp.classList.contains('correct')) score++;
+    });
+    document.querySelectorAll('[data-qcm]').forEach(item => {
+      if (item.dataset.state === 'correct') score++;
+    });
+    scoreCountEl.textContent = score;
+  }
+
+  // Fill-in-the-blank exercises
+  document.querySelectorAll('section.exo').forEach(section => {
+    const btn = section.querySelector('.check-btn');
+    const feedback = section.querySelector('.exo-feedback');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const blanks = section.querySelectorAll('input.blank');
+      const qcms = section.querySelectorAll('[data-qcm]');
+      let correctCount = 0;
+      let total = blanks.length + qcms.length;
+
+      blanks.forEach(inp => {
+        const ans = norm(inp.dataset.answer);
+        const val = norm(inp.value);
+        inp.classList.remove('correct', 'incorrect');
+        let hint = inp.nextElementSibling;
+        if (val === ans && val !== "") {
+          inp.classList.add('correct');
+          correctCount++;
+        } else {
+          inp.classList.add('incorrect');
+        }
+      });
+
+      qcms.forEach(item => {
+        const selected = item.querySelector('.choice-btn.selected');
+        const answer = item.dataset.answer;
+        item.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('correct', 'incorrect'));
+        if (selected) {
+          if (selected.dataset.value === answer) {
+            selected.classList.add('correct');
+            item.dataset.state = 'correct';
+            correctCount++;
+          } else {
+            selected.classList.add('incorrect');
+            item.querySelector(`[data-value="${answer}"]`).classList.add('correct');
+            item.dataset.state = 'incorrect';
+          }
+        } else {
+          item.dataset.state = 'incorrect';
+        }
+      });
+
+      if (correctCount === total) {
+        feedback.textContent = "✓ Parfait, tout est correct !";
+        feedback.style.color = "var(--good)";
+      } else {
+        feedback.textContent = `${correctCount} / ${total} bonnes réponses — corrige les cases en rouge et réessaie.`;
+        feedback.style.color = "var(--bad)";
+      }
+      recomputeScore();
+    });
+  });
+
+  // QCM choice buttons
+  document.querySelectorAll('.choice-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      const item = b.closest('[data-qcm]');
+      item.querySelectorAll('.choice-btn').forEach(x => x.classList.remove('selected', 'correct', 'incorrect'));
+      b.classList.add('selected');
+      item.dataset.state = 'pending';
+    });
+  });
+
+  // Enter key triggers check for the exercise
+  document.querySelectorAll('input.blank').forEach(inp => {
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        inp.closest('section.exo').querySelector('.check-btn').click();
+      }
+    });
+  });
+
+  // Reset
+  document.getElementById('reset-all').addEventListener('click', () => {
+    document.querySelectorAll('input.blank').forEach(inp => {
+      inp.value = '';
+      inp.classList.remove('correct', 'incorrect');
+    });
+    document.querySelectorAll('[data-qcm]').forEach(item => {
+      delete item.dataset.state;
+      item.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected', 'correct', 'incorrect'));
+    });
+    document.querySelectorAll('.exo-feedback').forEach(f => f.textContent = '');
+    recomputeScore();
+  });
+
+  // Theme toggle (per-viewer convenience only, not shared)
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+  let manual = null;
+  try { manual = localStorage.getItem('exo-theme'); } catch (e) {}
+  if (manual) root.setAttribute('data-theme', manual);
+  toggleBtn.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('exo-theme', next); } catch (e) {}
+  });
+
+  recomputeScore();
+})();
+</script>
+</body>
+</html>
